@@ -11,13 +11,13 @@ import UIKit
 
 
 protocol RepositoryDataDelegate {
-    func carryRepoData(_ repoData: [RepositoryModel])
-    func carryImgData(_ imgData: Data)
-    func carryError(_ error: String)
+    func carryRepoData(_ repositoryDataManager: RepositoryDataManager, didFetchRepoData repoData: [RepositoryModel])
+    func carryImgData(_ repositoryDataManager: RepositoryDataManager, didFetchImageData imgData: Data)
+    func carryError(_ repositoryDataManager: RepositoryDataManager, didFailWithError error: String)
 }
 
 extension RepositoryDataDelegate {
-    func carryRepoData(_ repoData: [RepositoryModel]){}
-    func carryImgData(_ imgData: Data){}
-    func carryError(_ error: String){}
+    func carryRepoData(_ repositoryDataManager: RepositoryDataManager, didFetchRepoData repoData: [RepositoryModel]){}
+    func carryImgData(_ repositoryDataManager: RepositoryDataManager, didFetchImageData imgData: Data){}
+    func carryError(_ repositoryDataManager: RepositoryDataManager, didFailWithError error: String){}
 }

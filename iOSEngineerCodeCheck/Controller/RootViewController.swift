@@ -77,7 +77,7 @@ extension RootViewController: UISearchBarDelegate {
         // fetch request
         if let word = searchBar.text {
             print(word)
-            repoDataManager.searchFor(word)
+            repoDataManager.fetchRepoData(word)
             searchBar.text = ""
         }
     }
@@ -85,14 +85,14 @@ extension RootViewController: UISearchBarDelegate {
 
 
 extension RootViewController: RepositoryDataDelegate {
-    func carryRepoData(_ repoData: [RepositoryModel]) {
+    func carryRepoData(_ repositoryDataManager: RepositoryDataManager, didFetchRepoData repoData: [RepositoryModel]) {
         DispatchQueue.main.async {
             self.repoList = repoData
             self.tableView.reloadData()
         }
     }
 
-    func carryError(_ error: String){
+    func carryError(_ repositoryDataManager: RepositoryDataManager, didFailWithError error: String) {
         // create the alert
         let alert = UIAlertController(title: "Warning", message: error, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))

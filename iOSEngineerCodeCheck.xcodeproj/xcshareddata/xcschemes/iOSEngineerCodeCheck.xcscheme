@@ -58,6 +58,17 @@
                ReferencedContainer = "container:iOSEngineerCodeCheck.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9893AB5528D59B5A00CD9D1B"
+               BuildableName = "iOSEngineerCodeCheckSlowTests.xctest"
+               BlueprintName = "iOSEngineerCodeCheckSlowTests"
+               ReferencedContainer = "container:iOSEngineerCodeCheck.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

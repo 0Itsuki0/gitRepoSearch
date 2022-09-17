@@ -48,14 +48,14 @@ class DetailViewController: UIViewController {
 
 // delegate function for carrying image data
 extension DetailViewController: RepositoryDataDelegate {
-    func carryImgData(_ imgData: Data) {
+    func carryImgData(_ repositoryDataManager: RepositoryDataManager, didFetchImageData imgData: Data) {
         DispatchQueue.main.async {
             let img = UIImage(data: imgData) ?? UIImage(systemName: "face.smiling")
             self.ImgView.image = img
         }
     }
     
-    func carryError(_ error: String){
+    func carryError(_ repositoryDataManager: RepositoryDataManager, didFailWithError error: String) {
         // create the alert
         let alert = UIAlertController(title: "Warning", message: error, preferredStyle: UIAlertController.Style.alert)
         // add an action (button)

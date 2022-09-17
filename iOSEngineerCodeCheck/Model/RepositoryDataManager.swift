@@ -14,11 +14,11 @@ struct RepositoryDataManager {
     let repoSearchBaseURL: String = "https://api.github.com/search/repositories?q="
     var delegate: RepositoryDataDelegate?
     
-    func searchFor(_ userInput: String) {
+    func fetchRepoData(_ userInput: String) {
         
         if userInput == "" {
             print("Empty user input")
-            self.delegate?.carryError("Empty user input")
+            self.delegate?.carryError(self, didFailWithError: "Empty user input")
             return
         }
         
@@ -26,7 +26,7 @@ struct RepositoryDataManager {
         
         guard let url = URL(string: urlString) else {
             print("Bad URL: \(urlString)")
-            self.delegate?.carryError("Invalid User Input: \(userInput)")
+            self.delegate?.carryError(self, didFailWithError: "Invalid User Input: \(userInput)")
             return
         }
         let _ = Task{() in
@@ -38,11 +38,11 @@ struct RepositoryDataManager {
                     
                     print("repo data fetch success")
                     let repoData = decodeRepoData(data)
-                    self.delegate?.carryRepoData(repoData)
+                    self.delegate?.carryRepoData(self, didFetchRepoData: repoData)
                     
                 } else if let error = error {
                     print("\(error)")
-                    self.delegate?.carryError("\(error)")
+                    self.delegate?.carryError(self, didFailWithError: "\(error)")
                     return
                 }}.resume()
                 
@@ -50,7 +50,7 @@ struct RepositoryDataManager {
                 
             } catch {
                 print("Error in task cancellation")
-                self.delegate?.carryError("Error in task cancellation")
+                self.delegate?.carryError(self, didFailWithError: "Error in task cancellation")
                 return
             }
         }
@@ -67,7 +67,7 @@ struct RepositoryDataManager {
         }
         catch {
             print("Error in data decoding")
-            self.delegate?.carryError("Error in data decoding")
+            self.delegate?.carryError(self, didFailWithError: "Error in data decoding")
             return []
         }
     }
@@ -86,10 +86,10 @@ struct RepositoryDataManager {
                 URLSession.shared.dataTask(with: url) { (data, response, error) in
                     if let data = data {
                         print("image fetch success")
-                        self.delegate?.carryImgData(data)
+                        self.delegate?.carryImgData(self, didFetchImageData: data)
                     } else if let error = error {
                         print("\(error)")
-                        self.delegate?.carryError("\(error)")
+                        self.delegate?.carryError(self, didFailWithError: "\(error)")
                         return
                     }
                 }.resume()
@@ -98,7 +98,7 @@ struct RepositoryDataManager {
                 
             } catch {
                 print("Error in task cancellation")
-                self.delegate?.carryError("Error in task cancellation")
+                self.delegate?.carryError(self, didFailWithError: "Error in task cancellation")
                 return
             }
         }
