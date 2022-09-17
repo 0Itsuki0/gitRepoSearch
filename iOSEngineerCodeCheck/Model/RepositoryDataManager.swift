@@ -62,7 +62,7 @@ struct RepositoryDataManager {
         let decoder = JSONDecoder()
         do {
             let dataDecoded = try decoder.decode(RepositoryList.self, from: data)
-            print(dataDecoded.items[0])
+            // print(dataDecoded.items[0])
             return dataDecoded.items
         }
         catch {

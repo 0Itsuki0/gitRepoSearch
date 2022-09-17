@@ -75,9 +75,11 @@ extension RootViewController: UISearchBarDelegate {
     // fetch result for an user input
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         // fetch request
-        let word = searchBar.text ?? ""
-        print(word)
-        repoDataManager.searchFor(word)
+        if let word = searchBar.text {
+            print(word)
+            repoDataManager.searchFor(word)
+            searchBar.text = ""
+        }
     }
 }
 

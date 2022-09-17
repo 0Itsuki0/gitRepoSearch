@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct RepositoryList: Codable{
-    var items: [RepositoryModel]
+struct RepositoryList: Codable, Equatable{
+    let items: [RepositoryModel]
 }

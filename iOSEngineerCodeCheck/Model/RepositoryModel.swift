@@ -8,20 +8,34 @@
 
 import Foundation
 
-struct RepositoryModel: Codable {
+struct RepositoryModel: Codable, Equatable {
     
-    var id: Int
-    var full_name: String?
+    let id: Int
+    let full_name: String?
     let owner: OwnerModel?
-    var language: String?
-    var stargazers_count: Int?
-    var wachers_count: Int?
-    var forks_count: Int?
-    var open_issues_count: Int?
+    let language: String?
+    let stargazers_count: Int?
+    let wachers_count: Int?
+    let forks_count: Int?
+    let open_issues_count: Int?
 
-    struct OwnerModel: Codable {
-        var avatar_url: String?
+
+    
+    struct OwnerModel: Codable, Equatable {
+        let avatar_url: String?
     }
 }
 
-
+/*
+extension RepositoryModel {
+    init(from decoder: Decoder) throws {
+      let container = try decoder.container(keyedBy: CodingKeys.self)
+      name = try container.decode(String.self, forKey: .name)
+      city = try container.decode(String.self, forKey: .city)
+      country = try container.decode(String.self, forKey: .country)
+      date = try container.decode(String.self, forKey: .date)
+      days = try container.decode(Int.self, forKey: .days)
+      isOnline = (try? container.decode(Bool.self, forKey: .isOnline)) ?? false
+    }
+}
+*/
