@@ -10,13 +10,17 @@ import XCTest
 @testable import iOSEngineerCodeCheck
 
 class iOSEngineerCodeCheckTests: XCTestCase {
+    var sut_repositoryDataManager: RepositoryDataManager!
+
     var sut_repoList: RepositoryList!
     var sut_repoModel_1: RepositoryModel!
     var sut_repoModel_2: RepositoryModel!
+    
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         try super.setUpWithError()
+        sut_repositoryDataManager = RepositoryDataManager()
         sut_repoModel_1 = RepositoryModel(
             id: 53357782,
             full_name: "acidanthera/AppleALC",
@@ -45,6 +49,7 @@ class iOSEngineerCodeCheckTests: XCTestCase {
         sut_repoList = nil
         sut_repoModel_1 = nil
         sut_repoModel_2 = nil
+        sut_repositoryDataManager = nil
         try super.tearDownWithError()
     }
 
@@ -61,7 +66,7 @@ class iOSEngineerCodeCheckTests: XCTestCase {
     }
     
     
-    func test_customCoding_returnsExpectedValue() throws {
+    func test_customCodingModel_returnsExpectedValue() throws {
         // Given
         let repositoryList = sut_repoList
 
@@ -73,10 +78,20 @@ class iOSEngineerCodeCheckTests: XCTestCase {
         XCTAssertEqual(
             decodedRepositoryList,
             repositoryList,
-            "Decoded JSON doesn't match the given RepositoryList object"
+            "Decoded Object doesn't match the given RepositoryList object"
         )
     }
     
+    func test_RepositoryDataMangager_decodeRepoData() throws {
+        let result_expected = sut_repoList.items
+        let encodedRepositoryList = try JSONEncoder().encode(sut_repoList)
+        let result = sut_repositoryDataManager.decodeRepoData(encodedRepositoryList)
+        XCTAssertEqual(
+            result_expected,
+            result,
+            "Decoded Object doesn't match the given RepositoryList object"
+        )
+    }
     
 
 }

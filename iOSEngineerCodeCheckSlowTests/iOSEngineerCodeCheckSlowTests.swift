@@ -11,7 +11,7 @@ import XCTest
 
 
 final class iOSEngineerCodeCheckSlowTests: XCTestCase {
-    var repositoryDataManager: RepositoryDataManager!
+    var sut_repositoryDataManager: RepositoryDataManager!
     var repoDataList: [RepositoryModel]?
     var imgData: Data?
     var expectation: XCTestExpectation?
@@ -19,15 +19,15 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         try super.setUpWithError()
-        repositoryDataManager = RepositoryDataManager()
-        repositoryDataManager.delegate = self
+        sut_repositoryDataManager = RepositoryDataManager()
+        sut_repositoryDataManager.delegate = self
         repoDataList = nil
         imgData = nil
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        repositoryDataManager = nil
+        sut_repositoryDataManager = nil
         repoDataList = nil
         imgData = nil
         try super.tearDownWithError()
@@ -51,7 +51,7 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
     func test_RepositoryDataMangager_fetchRepoData() {
         // Act
         expectation = expectation(description: "fetch repository data")
-        repositoryDataManager.fetchRepoData("test")
+        sut_repositoryDataManager.fetchRepoData("test")
 
         // Assert
         waitForExpectations(timeout: 10)
@@ -61,7 +61,7 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
     func test_RepositoryDataMangager_fetchImgData() {
         // Act
         expectation = expectation(description: "fetch Image data")
-        repositoryDataManager.fetchAvatarImage(from: "https://avatars.githubusercontent.com/u/11684617?v=4")
+        sut_repositoryDataManager.fetchAvatarImage(from: "https://avatars.githubusercontent.com/u/11684617?v=4")
 
         // Assert
         waitForExpectations(timeout: 10)
