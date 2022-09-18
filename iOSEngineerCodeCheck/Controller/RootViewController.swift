@@ -22,6 +22,9 @@ class RootViewController: UITableViewController {
         // assigning self as the searchBarDelegate
         SchBr.delegate = self
         repoDataManager.delegate = self
+        tableView.accessibilityIdentifier = "RepoListTable"
+        SchBr.accessibilityIdentifier = "SearchBar"
+        navigationController?.navigationBar.accessibilityIdentifier = "NavBar"
     }
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,6 +50,7 @@ extension RootViewController {
         cell.textLabel?.text = rp.full_name ?? ""
         cell.detailTextLabel?.text = rp.language ?? ""
         cell.tag = indexPath.row
+        cell.accessibilityIdentifier = String(indexPath.row)
         return cell
         
     }

@@ -82,7 +82,7 @@ class iOSEngineerCodeCheckTests: XCTestCase {
         )
     }
     
-    func test_RepositoryDataMangager_decodeRepoData() throws {
+    func test_RepositoryDataMangager_decodeRepoData_validData() throws {
         let result_expected = sut_repoList.items
         let encodedRepositoryList = try JSONEncoder().encode(sut_repoList)
         let result = sut_repositoryDataManager.decodeRepoData(encodedRepositoryList)
@@ -92,6 +92,10 @@ class iOSEngineerCodeCheckTests: XCTestCase {
             "Decoded Object doesn't match the given RepositoryList object"
         )
     }
+    
+    func test_RepositoryDataMangager_decodeRepoData_InvalidData() throws {
+    }
+
     
 
 }

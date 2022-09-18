@@ -48,26 +48,32 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
         }
     }
     
-    func test_RepositoryDataMangager_fetchRepoData() {
+    func test_RepositoryDataMangager_fetchRepoData_validInput() {
         // Act
         expectation = expectation(description: "fetch repository data")
         sut_repositoryDataManager.fetchRepoData("test")
 
         // Assert
         waitForExpectations(timeout: 10)
-        XCTAssertNotNil(repoDataList, "success in fetching repository Data")
+        XCTAssertNotNil(repoDataList, "fail in fetching repository Data")
     }
     
-    func test_RepositoryDataMangager_fetchImgData() {
+    func test_RepositoryDataMangager_fetchImgData_validInput() {
         // Act
         expectation = expectation(description: "fetch Image data")
         sut_repositoryDataManager.fetchAvatarImage(from: "https://avatars.githubusercontent.com/u/11684617?v=4")
 
         // Assert
         waitForExpectations(timeout: 10)
-        XCTAssertNotNil(imgData, "success in fetching Image Data")
+        XCTAssertNotNil(imgData, "fail in fetching Image Data")
     }
     
+    func test_RepositoryDataMangager_fetchRepoData_InvalidInput() {
+        
+    }
+    func test_RepositoryDataMangager_fetchImgData_InvalidInput() {
+    }
+
     
     
 }
@@ -91,6 +97,5 @@ extension iOSEngineerCodeCheckSlowTests: RepositoryDataDelegate {
         self.expectation = nil
         
     }
-
     
 }

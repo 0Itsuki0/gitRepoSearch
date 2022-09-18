@@ -32,16 +32,32 @@ class DetailViewController: UIViewController {
         // assign self as the repoDataDelegate
         repoDataManager.delegate = self
         
+        // give identifiers to views
+        ImgView.accessibilityIdentifier = "AvatarImage"
+        
+        TtlLbl.accessibilityIdentifier = "TitleLabel"
+        
+        LangLbl.accessibilityIdentifier = "LanguageLabel"
+        
+        StrsLbl.accessibilityIdentifier = "StarsLabel"
+        WchsLbl.accessibilityIdentifier = "WatchesLabel"
+        FrksLbl.accessibilityIdentifier = "ForksLabel"
+        IsssLbl.accessibilityIdentifier = "IssuesLabel"
+        
+        // update image
+        repoDataManager.fetchAvatarImage(from: repo.owner?.avatar_url)
+        
         // update labels
+        TtlLbl.text = repo.full_name ?? ""
+
         LangLbl.text = "Written in \(repo.language ?? "")"
+
         StrsLbl.text = "\(repo.stargazers_count ?? 0) stars"
         WchsLbl.text = "\(repo.wachers_count ?? 0) watchers"
         FrksLbl.text = "\(repo.forks_count ?? 0) forks"
         IsssLbl.text = "\(repo.open_issues_count ?? 0) open issues"
-        TtlLbl.text = repo.full_name ?? ""
         
-        // update image
-        repoDataManager.fetchAvatarImage(from: repo.owner?.avatar_url)
+
         
     }
 }
