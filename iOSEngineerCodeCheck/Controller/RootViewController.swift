@@ -25,6 +25,9 @@ class RootViewController: UITableViewController {
         tableView.accessibilityIdentifier = "RepoListTable"
         SchBr.accessibilityIdentifier = "SearchBar"
         navigationController?.navigationBar.accessibilityIdentifier = "NavBar"
+      
+        tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+
     }
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -45,11 +48,10 @@ extension RootViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! TableViewCell
         let rp = repoList[indexPath.row]
-        cell.textLabel?.text = rp.full_name ?? ""
-        cell.detailTextLabel?.text = rp.language ?? ""
+        cell.repoTitleLabel.text = rp.full_name ?? ""
+        cell.repoLanguageLabel.text = rp.language ?? ""
         cell.tag = indexPath.row
         cell.accessibilityIdentifier = String(indexPath.row)
         return cell

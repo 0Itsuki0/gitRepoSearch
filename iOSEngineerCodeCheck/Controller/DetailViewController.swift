@@ -50,7 +50,7 @@ class DetailViewController: UIViewController {
         // update labels
         TtlLbl.text = repo.full_name ?? ""
 
-        LangLbl.text = "Written in \(repo.language ?? "")"
+        LangLbl.text = "Written in \(repo.language ?? "(Unspecified)" )"
 
         StrsLbl.text = "\(repo.stargazers_count ?? 0) stars"
         WchsLbl.text = "\(repo.wachers_count ?? 0) watchers"
