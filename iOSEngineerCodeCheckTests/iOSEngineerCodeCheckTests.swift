@@ -94,8 +94,10 @@ class iOSEngineerCodeCheckTests: XCTestCase {
     }
     
     func test_RepositoryDataMangager_decodeRepoData_InvalidData() throws {
+        let invalidData = Data("test".utf8)
+        let result = sut_repositoryDataManager.decodeRepoData(invalidData)
+        XCTAssertNil(result, "decode success when it is supposed to fail due to invalid data")
     }
-
     
 
 }

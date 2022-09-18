@@ -178,7 +178,6 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     func test_alertView() {
         
         let searchBarElement = app.tables["RepoListTable"].otherElements["SearchBar"]
-        let repolisttableTable = app.tables["RepoListTable"]
         
         searchBarElement.tap()
         searchBarElement.typeText("t. t")

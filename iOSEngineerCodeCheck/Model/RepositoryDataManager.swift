@@ -38,7 +38,7 @@ struct RepositoryDataManager {
                     
                     print("repo data fetch success")
                     let repoData = decodeRepoData(data)
-                    self.delegate?.carryRepoData(self, didFetchRepoData: repoData)
+                    self.delegate?.carryRepoData(self, didFetchRepoData: repoData ?? [])
                     
                 } else if let error = error {
                     print("\(error)")
@@ -58,7 +58,7 @@ struct RepositoryDataManager {
     }
     
     
-    func decodeRepoData(_ data: Data) -> [RepositoryModel]{
+    func decodeRepoData(_ data: Data) -> [RepositoryModel]?{
         let decoder = JSONDecoder()
         do {
             let dataDecoded = try decoder.decode(RepositoryList.self, from: data)
@@ -68,7 +68,7 @@ struct RepositoryDataManager {
         catch {
             print("Error in data decoding")
             self.delegate?.carryError(self, didFailWithError: "Error in data decoding")
-            return []
+            return nil
         }
     }
     
@@ -77,8 +77,10 @@ struct RepositoryDataManager {
                 
         guard let avatar_url = avatar_url, let url = URL(string: avatar_url) else {
             print("Bad Avatar URL")
+            self.delegate?.carryError(self, didFailWithError: "Invalid Avatar URL")
             return
         }
+        
         let _ = Task{() in
             do {
                 try Task.checkCancellation()
