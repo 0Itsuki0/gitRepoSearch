@@ -173,8 +173,30 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         let issuesLabel = app.staticTexts["IssuesLabel"]
         XCTAssertTrue(issuesLabel.exists, "title label does not exist")
 
-        
     }
     
+    func test_alertView() {
+        
+        let searchBarElement = app.tables["RepoListTable"].otherElements["SearchBar"]
+        let repolisttableTable = app.tables["RepoListTable"]
+        
+        searchBarElement.tap()
+        searchBarElement.typeText("t. t")
+        
+        app.buttons["Search"].tap()
+        
+        // wait for data to load
+      
+        let alertView = app.alerts.element(boundBy: 0)
+        let exists = NSPredicate(format: "exists == 1")
+        let expectation = expectation(for: exists, evaluatedWith: alertView)
+        waitForExpectations(timeout: 10, handler: nil)
+        
+        XCTAssertTrue(alertView.exists, "alert does not show up")
+        expectation.fulfill()
+        let okButton = alertView.buttons["OK"]
+        okButton.tap()
+
+    }
     
 }
