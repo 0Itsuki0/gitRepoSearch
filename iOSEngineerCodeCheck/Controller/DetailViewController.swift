@@ -62,7 +62,9 @@ class DetailViewController: UIViewController {
     }
 }
 
-// delegate function for carrying image data
+
+// MARK: - RepositoryDataDelegate functions
+
 extension DetailViewController: RepositoryDataDelegate {
     func carryImgData(_ repositoryDataManager: RepositoryDataManager, didFetchImageData imgData: Data) {
         DispatchQueue.main.async {

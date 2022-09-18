@@ -36,7 +36,8 @@ class RootViewController: UITableViewController {
 }
 
 
-// functions as UITableViewController
+// MARK: - tableViewController functions
+
 extension RootViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,7 +64,8 @@ extension RootViewController {
 }
 
 
-// functions as UISearchBarDelegate
+// MARK: - searchBarDelegate functions
+
 extension RootViewController: UISearchBarDelegate {
     
     // return button pressed
@@ -87,6 +89,7 @@ extension RootViewController: UISearchBarDelegate {
     }
 }
 
+// MARK: - RepositoryDataDelegate functions
 
 extension RootViewController: RepositoryDataDelegate {
     func carryRepoData(_ repositoryDataManager: RepositoryDataManager, didFetchRepoData repoData: [RepositoryModel]) {

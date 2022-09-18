@@ -52,19 +52,6 @@ class iOSEngineerCodeCheckTests: XCTestCase {
         sut_repositoryDataManager = nil
         try super.tearDownWithError()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
     
     func test_customCodingModel_returnsExpectedValue() throws {
         // Given
@@ -100,4 +87,23 @@ class iOSEngineerCodeCheckTests: XCTestCase {
     }
     
 
+    // MARK: - performance test
+
+    func test_decoderPerformance() throws {
+        let data = try JSONEncoder().encode(self.sut_repoList.items)
+
+        measure(
+            metrics: [
+                XCTClockMetric(),
+                XCTCPUMetric(),
+                XCTStorageMetric(),
+                XCTMemoryMetric()
+            ]
+        ) {
+            let _ = sut_repositoryDataManager.decodeRepoData(data)
+        }
+        
+    }
+    
+    
 }
