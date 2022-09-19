@@ -18,8 +18,6 @@ class TableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        print(cellBackgroundColorView.bounds)
         
         cellBackgroundColorView.backgroundColor = UIColor.clear
         let gradientLayer = CAGradientLayer()

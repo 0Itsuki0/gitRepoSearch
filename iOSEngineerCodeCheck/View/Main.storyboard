@@ -37,21 +37,18 @@
                             <outlet property="delegate" destination="MOh-CZ-3ki" id="A6Y-Dm-cjQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="GitHub Repository Search" largeTitleDisplayMode="never" id="vbG-eT-rag"/>
+                    <navigationItem key="navigationItem" title="GitHub Repository Search" id="vbG-eT-rag">
+                        <barButtonItem key="rightBarButtonItem" image="gearshape.fill" catalog="system" id="Xcx-ct-FS5">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="SchBr" destination="6rq-CD-Hob" id="3gq-mK-4M3"/>
+                        <outlet property="tableView" destination="Fpt-Ev-QNW" id="X2y-wk-Z1C"/>
                         <segue destination="AHY-RL-7mG" kind="show" identifier="RootToDetail" id="qqd-8W-4W1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xer-fe-JeW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <navigationItem title="GitHub Repository Search" id="W08-QM-fdn"/>
-                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="QHE-OT-Mi9">
-                    <rect key="frame" x="0.0" y="0.0" width="97" height="34"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <viewLayoutGuide key="safeArea" id="ohS-8r-lSj"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
             </objects>
             <point key="canvasLocation" x="-498" y="137"/>
         </scene>
@@ -150,7 +147,7 @@
         <scene sceneID="hWi-qa-NBR">
             <objects>
                 <navigationController keyboardType="off" id="wFt-RI-uk4" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRk-f0-Qkc">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRk-f0-Qkc">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -169,4 +166,7 @@
             <point key="canvasLocation" x="-1417" y="137"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gearshape.fill" catalog="system" width="128" height="123"/>
+    </resources>
 </document>

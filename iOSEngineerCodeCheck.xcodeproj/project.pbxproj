@@ -124,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				9882EDDF28D7D80300C7FC1B /* K.swift */,
-				9882EDDE28D7D62900C7FC1B /* ColorGradient */,
 				9882EDDD28D7D60100C7FC1B /* Repository */,
 			);
 			path = Model;
@@ -148,13 +147,6 @@
 				983529CE28D556AD007354A7 /* RepositoryModel.swift */,
 			);
 			path = Repository;
-			sourceTree = "<group>";
-		};
-		9882EDDE28D7D62900C7FC1B /* ColorGradient */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ColorGradient;
 			sourceTree = "<group>";
 		};
 		9893AB5728D59B5A00CD9D1B /* iOSEngineerCodeCheckSlowTests */ = {

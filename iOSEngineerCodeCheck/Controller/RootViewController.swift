@@ -8,8 +8,9 @@
 
 import UIKit
 
-class RootViewController: UITableViewController {
+class RootViewController: UIViewController, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var SchBr: UISearchBar!
     
     var repoList: [RepositoryModel] = []
@@ -19,8 +20,7 @@ class RootViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-           
+                   
         // assigning self as the searchBarDelegate
         SchBr.delegate = self
         repoDataManager.delegate = self
@@ -44,13 +44,13 @@ class RootViewController: UITableViewController {
 
 // MARK: - tableViewController functions
 
-extension RootViewController {
+extension RootViewController: UITableViewDelegate {
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return repoList.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! TableViewCell
         let rp = repoList[indexPath.row]
         cell.repoTitleLabel.text = rp.full_name ?? ""
@@ -63,7 +63,7 @@ extension RootViewController {
     }
     
     // when a row is selected, move to the detail page
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         idx = indexPath.row
         performSegue(withIdentifier: "RootToDetail", sender: self)
     }
