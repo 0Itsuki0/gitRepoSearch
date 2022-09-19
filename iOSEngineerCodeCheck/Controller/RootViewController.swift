@@ -66,7 +66,15 @@ class RootViewController: UIViewController, UITableViewDataSource {
         repoList_filtered = repoList.filter { repo in
             (!self.starSwitch.isOn || repo.showStar)
         }
-        self.tableView.reloadData()
+        tableView.reloadData()
+        
+        
+        if (repoList_filtered.count == 0 && starSwitch.isOn) {
+            let alert = UIAlertController(title: "Warning", message: "No matching starred repository", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true)
+        }
+ 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -141,8 +149,19 @@ extension RootViewController: RepositoryDataDelegate {
             self.repoList_filtered = self.repoList.filter { repo in
                 (!self.starSwitch.isOn || repo.showStar)
             }
-            
             self.tableView.reloadData()
+
+            if (self.repoList.count == 0) {
+                let alert = UIAlertController(title: "Warning", message: "No maching", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true)
+            }
+            else if (self.repoList_filtered.count == 0 && self.repoList.count != 0) {
+                let alert = UIAlertController(title: "Warning", message: "No starred repository matching; non stared repository found", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true)
+            }
+            
         }
     }
 
