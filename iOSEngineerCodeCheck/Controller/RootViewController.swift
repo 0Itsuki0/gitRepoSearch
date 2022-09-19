@@ -55,6 +55,7 @@ extension RootViewController {
         let rp = repoList[indexPath.row]
         cell.repoTitleLabel.text = rp.full_name ?? ""
         cell.repoLanguageLabel.text = rp.language ?? ""
+        cell.starImage.isHidden = !rp.showStar
         cell.tag = indexPath.row
         cell.accessibilityIdentifier = String(indexPath.row)
         return cell

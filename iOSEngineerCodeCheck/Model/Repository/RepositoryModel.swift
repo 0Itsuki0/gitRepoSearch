@@ -19,7 +19,15 @@ struct RepositoryModel: Codable, Equatable {
     let forks_count: Int?
     let open_issues_count: Int?
 
-
+    var showStar: Bool {
+        let stargazers_count = stargazers_count ?? 0
+        if stargazers_count > K.starThreshold {
+            return true
+        }
+        else {
+            return false
+        }
+    }
     
     struct OwnerModel: Codable, Equatable {
         let avatar_url: String?

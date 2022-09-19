@@ -13,6 +13,7 @@ import UIKit
 
 struct K {
     
+    static let starThreshold: Int = 1000
     
 
     
