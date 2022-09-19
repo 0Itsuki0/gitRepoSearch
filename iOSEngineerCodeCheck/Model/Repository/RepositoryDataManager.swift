@@ -104,9 +104,15 @@ struct RepositoryDataManager {
                 return
             }
         }
-        
-
-                
     }
+    
+    func openRepository(withURL url: String?) {
+        guard let repoUrl_string = url, let url = URL(string: repoUrl_string) else {
+            self.delegate?.carryError(self, didFailWithError: "Failed to open the repository")
+            return
+        }
+        UIApplication.shared.open(url)
+    }
+    
 
 }

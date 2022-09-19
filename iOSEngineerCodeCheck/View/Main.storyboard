@@ -168,13 +168,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4q1-pG-WSB">
-                                <rect key="frame" x="166" y="434" width="82.5" height="57"/>
+                                <rect key="frame" x="166" y="424" width="82.5" height="57"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="oOe-O2-3RS">
-                                <rect key="frame" x="40" y="531" width="334" height="128"/>
+                                <rect key="frame" x="40" y="521" width="334" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3M-QO-Kom">
                                         <rect key="frame" x="0.0" y="0.0" width="97.5" height="20"/>
@@ -214,23 +214,41 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iim-eb-8Ad">
-                                <rect key="frame" x="40" y="60" width="334" height="334"/>
+                                <rect key="frame" x="40" y="50" width="334" height="334"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Iim-eb-8Ad" secondAttribute="height" multiplier="1:1" id="CoT-OC-9DA"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usd-22-wOX">
+                                <rect key="frame" x="174" y="689" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="28y-Q7-7Na"/>
+                                    <constraint firstAttribute="width" constant="200" id="x6n-Jj-hzo"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="View on GitHub" cornerStyle="large">
+                                    <fontDescription key="titleFontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="20"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="openGitHubButtonPress:" destination="AHY-RL-7mG" eventType="touchUpInside" id="ZRX-2G-rY7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vf8-aM-COc"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4q1-pG-WSB" secondAttribute="trailing" constant="20" id="4IR-h8-aXZ"/>
-                            <constraint firstItem="Iim-eb-8Ad" firstAttribute="top" secondItem="4gp-25-lRZ" secondAttribute="top" constant="60" id="4LN-9y-VId"/>
+                            <constraint firstItem="Iim-eb-8Ad" firstAttribute="top" secondItem="4gp-25-lRZ" secondAttribute="top" constant="50" id="4LN-9y-VId"/>
                             <constraint firstItem="oOe-O2-3RS" firstAttribute="top" secondItem="4q1-pG-WSB" secondAttribute="bottom" constant="40" id="Ac3-dK-PiL"/>
                             <constraint firstItem="Iim-eb-8Ad" firstAttribute="leading" secondItem="4gp-25-lRZ" secondAttribute="leading" constant="40" id="EMR-2C-CyU"/>
                             <constraint firstItem="4q1-pG-WSB" firstAttribute="top" secondItem="Iim-eb-8Ad" secondAttribute="bottom" constant="40" id="G2L-KM-330"/>
                             <constraint firstItem="4q1-pG-WSB" firstAttribute="centerX" secondItem="Iim-eb-8Ad" secondAttribute="centerX" id="Ght-Nb-HEu"/>
                             <constraint firstItem="4q1-pG-WSB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4gp-25-lRZ" secondAttribute="leading" constant="20" id="IVy-6a-CH5"/>
                             <constraint firstAttribute="trailing" secondItem="Iim-eb-8Ad" secondAttribute="trailing" constant="40" id="IgU-EN-fM3"/>
+                            <constraint firstItem="usd-22-wOX" firstAttribute="top" secondItem="oOe-O2-3RS" secondAttribute="bottom" constant="40" id="Qcl-3Q-giD"/>
+                            <constraint firstItem="oOe-O2-3RS" firstAttribute="trailing" secondItem="usd-22-wOX" secondAttribute="trailing" id="V72-uT-zqZ"/>
                             <constraint firstItem="oOe-O2-3RS" firstAttribute="width" secondItem="Iim-eb-8Ad" secondAttribute="width" id="dPu-j0-Myp"/>
                             <constraint firstItem="oOe-O2-3RS" firstAttribute="centerX" secondItem="4q1-pG-WSB" secondAttribute="centerX" id="kVV-YK-ePr"/>
                         </constraints>

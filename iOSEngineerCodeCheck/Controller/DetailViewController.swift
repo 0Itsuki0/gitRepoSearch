@@ -56,10 +56,14 @@ class DetailViewController: UIViewController {
         WchsLbl.text = "\(repo.wachers_count ?? 0) watchers"
         FrksLbl.text = "\(repo.forks_count ?? 0) forks"
         IsssLbl.text = "\(repo.open_issues_count ?? 0) open issues"
-        
-
-        
     }
+    
+    
+    @IBAction func openGitHubButtonPress(_ sender: Any) {
+        repoDataManager.openRepository(withURL: repo.html_url)
+    }
+    
+    
 }
 
 
