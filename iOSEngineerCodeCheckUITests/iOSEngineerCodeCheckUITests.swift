@@ -35,26 +35,26 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     
     func test_UISearchBar_typing() {
         // let searchBarElement = app.tables.searchFields["GitHubのリポジトリを検索"]
-        let searchBarElement = app.tables["RepoListTable"].otherElements["textField"]
-        XCTAssertTrue(searchBarElement.exists, "search bar does not exists")
-        searchBarElement.tap()
-        searchBarElement.typeText("test")
+        let textFieldElement = app.textFields["textField"]
+        XCTAssertTrue(textFieldElement.exists, "search bar does not exists")
+        textFieldElement.tap()
+        textFieldElement.typeText("test")
         
     }
     
     func test_navigation() {
         
-        let searchBarElement = app.tables["RepoListTable"].otherElements["textField"]
-        XCTAssertTrue(searchBarElement.exists, "search bar does not exists")
+        let textFieldElement = app.textFields["textField"]
+        XCTAssertTrue(textFieldElement.exists, "search bar does not exists")
         
         let repolisttableTable = app.tables["RepoListTable"]
         XCTAssertTrue(repolisttableTable.exists, "table does not exists")
         
         
-        searchBarElement.tap()
-        searchBarElement.typeText("test")
+        textFieldElement.tap()
+        textFieldElement.typeText("test")
         
-        app.buttons["Search"].tap()
+        app.buttons["Return"].tap()
         
         // wait for data to load
         let tableCell_0 = repolisttableTable.cells["0"]
@@ -79,13 +79,13 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     
     func test_tableViewScroll() {
         
-        let searchBarElement = app.tables["RepoListTable"].otherElements["textField"]
+        let textFieldElement = app.textFields["textField"]
         let repolisttableTable = app.tables["RepoListTable"]
         
-        searchBarElement.tap()
-        searchBarElement.typeText("google")
+        textFieldElement.tap()
+        textFieldElement.typeText("google")
         
-        app.buttons["Search"].tap()
+        app.buttons["Return"].tap()
         
         // wait for data to load
         let tableCell_0 = repolisttableTable.cells["0"]
@@ -114,15 +114,50 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     }
     
     
-    func test_detailViewLabelExist() {
+    func testStarFilter() {
         
-        let searchBarElement = app.tables["RepoListTable"].otherElements["textField"]
+        let textFieldElement = app.textFields["textField"]
         let repolisttableTable = app.tables["RepoListTable"]
         
-        searchBarElement.tap()
-        searchBarElement.typeText("google")
+        textFieldElement.tap()
+        textFieldElement.typeText("test")
         
-        app.buttons["Search"].tap()
+        app.buttons["Return"].tap()
+        
+        
+        // wait for data to load
+        let tableCell_0 = repolisttableTable.cells["0"]
+        let exists = NSPredicate(format: "exists == 1")
+        let expectation = expectation(for: exists, evaluatedWith: tableCell_0)
+        waitForExpectations(timeout: 10, handler: nil)
+
+        XCTAssertTrue(tableCell_0.exists, "cell 0 is not on the table")
+        expectation.fulfill()
+        
+        
+        app.buttons["control center"].tap()
+        app.switches["starSwitch"].tap()
+        
+        // wait for data to load
+        let cellCount = repolisttableTable.cells.count
+        
+        for i in 0..<cellCount {
+            XCTAssertTrue(repolisttableTable.cells[String(i)].images["starImage"].exists, "star filter does not work properly")
+        }
+        
+    }
+    
+    
+    
+    func test_detailViewLabelExist() {
+        
+        let textFieldElement = app.textFields["textField"]
+        let repolisttableTable = app.tables["RepoListTable"]
+        
+        textFieldElement.tap()
+        textFieldElement.typeText("google")
+        
+        app.buttons["Return"].tap()
         
         // wait for data to load
         let tableCell_0 = repolisttableTable.cells["0"]
@@ -157,16 +192,19 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         let issuesLabel = app.staticTexts["IssuesLabel"]
         XCTAssertTrue(issuesLabel.exists, "title label does not exist")
 
+        let gitHubOpenButton = app.buttons["gitHubOpenButton"]
+        XCTAssertTrue(gitHubOpenButton.exists, "gitHub open Button does not exist")
+
     }
     
     func test_alertView() {
         
-        let searchBarElement = app.tables["RepoListTable"].otherElements["textField"]
+        let textFieldElement = app.textFields["textField"]
+
+        textFieldElement.tap()
+        textFieldElement.typeText("t. t")
         
-        searchBarElement.tap()
-        searchBarElement.typeText("t. t")
-        
-        app.buttons["Search"].tap()
+        app.buttons["Return"].tap()
         
         // wait for data to load
       

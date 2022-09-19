@@ -21,6 +21,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var FrksLbl: UILabel!
     @IBOutlet weak var IsssLbl: UILabel!
     
+    @IBOutlet weak var gitHubOpenButton: UIButton!
+    
+    
     var repo: RepositoryModel!
     var repoDataManager = RepositoryDataManager()
 
@@ -43,6 +46,8 @@ class DetailViewController: UIViewController {
         WchsLbl.accessibilityIdentifier = "WatchesLabel"
         FrksLbl.accessibilityIdentifier = "ForksLabel"
         IsssLbl.accessibilityIdentifier = "IssuesLabel"
+        
+        gitHubOpenButton.accessibilityIdentifier = "gitHubOpenButton"
         
         // update image
         repoDataManager.fetchAvatarImage(from: repo.owner?.avatar_url)

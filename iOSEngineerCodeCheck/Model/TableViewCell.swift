@@ -25,6 +25,8 @@ class TableViewCell: UITableViewCell {
         gradientLayer.colors = [UIColor.black.cgColor, UIColor.darkGray.cgColor]
         cellBackgroundColorView.layer.insertSublayer(gradientLayer, at: 0)
        
+        starImage.accessibilityIdentifier = "starImage"
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

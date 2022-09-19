@@ -48,6 +48,8 @@ class RootViewController: UIViewController, UITableViewDataSource {
         tableView.accessibilityIdentifier = "RepoListTable"
         textField.accessibilityIdentifier = "textField"
         navigationController?.navigationBar.accessibilityIdentifier = "NavBar"
+        filterView.accessibilityIdentifier = "filterView"
+        starSwitch.accessibilityIdentifier = "starSwitch"
       
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
 
