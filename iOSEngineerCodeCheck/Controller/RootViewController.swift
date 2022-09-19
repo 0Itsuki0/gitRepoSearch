@@ -56,6 +56,13 @@ class RootViewController: UIViewController, UITableViewDataSource {
     
     @IBAction func SearchButtonClick(_ sender: Any) {
         textField.endEditing(true)
+        
+        if let word = textField.text {
+            print(word)
+            repoDataManager.fetchRepoData(word)
+            textField.text = ""
+        }
+        
     }
     
     @IBAction func FilterOptionButtonClick(_ sender: Any) {
@@ -76,6 +83,12 @@ class RootViewController: UIViewController, UITableViewDataSource {
         }
  
     }
+    
+    
+    @IBAction func tapGestureRecognized(_ sender: Any) {
+        textField.endEditing(true)
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RootToDetail"{
@@ -120,24 +133,17 @@ extension RootViewController: UITextFieldDelegate {
     
     // return button pressed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         textField.endEditing(true)
-        return true
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
-        return true
-    }
-    
-    // fetch result for an user input
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        // fetch request
         if let word = textField.text {
             print(word)
             repoDataManager.fetchRepoData(word)
             textField.text = ""
         }
+        
+        return true
     }
+    
 }
 
 // MARK: - RepositoryDataDelegate functions

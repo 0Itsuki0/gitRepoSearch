@@ -24,10 +24,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0rZ-2I-exx" userLabel="Text Field View">
                                         <rect key="frame" x="0.0" y="0.0" width="344" height="70"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search in Git Repository" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="20" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="ILU-BY-fLC">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search in Git Repository" textAlignment="natural" minimumFontSize="20" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="ILU-BY-fLC">
                                                 <rect key="frame" x="15" y="15" width="279" height="40"/>
                                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                             </textField>
@@ -131,6 +131,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lmU-S6-DOU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="0ag-CT-HVZ" firstAttribute="leading" secondItem="7Ty-6b-EDR" secondAttribute="leading" id="E9w-cH-qLb"/>
                             <constraint firstItem="0ag-CT-HVZ" firstAttribute="centerX" secondItem="7Ty-6b-EDR" secondAttribute="centerX" id="EiB-t6-b0e"/>
@@ -143,6 +144,9 @@
                             <constraint firstItem="rF8-tS-UVt" firstAttribute="trailing" secondItem="nm5-K9-XTR" secondAttribute="trailing" id="pzc-tb-b8f"/>
                             <constraint firstAttribute="trailing" secondItem="nm5-K9-XTR" secondAttribute="trailing" id="quM-Ib-sjR"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="WOG-zp-heT" appends="YES" id="9eg-Ha-pwH"/>
+                        </connections>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="GitHub Repository Search" largeTitleDisplayMode="always" id="JbT-oF-fTZ"/>
@@ -156,6 +160,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GLf-dr-SMe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="WOG-zp-heT">
+                    <connections>
+                        <action selector="tapGestureRecognized:" destination="jN4-Rp-zsk" id="MLe-0m-CJ3"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="234.78260869565219" y="235.71428571428569"/>
         </scene>
