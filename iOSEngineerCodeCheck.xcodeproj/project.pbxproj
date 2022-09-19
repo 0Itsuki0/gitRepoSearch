@@ -15,6 +15,7 @@
 		983529D228D556AD007354A7 /* RepositoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983529CE28D556AD007354A7 /* RepositoryModel.swift */; };
 		98352A1728D55943007354A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98352A1528D55943007354A7 /* Main.storyboard */; };
 		98352A1828D55943007354A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98352A1628D55943007354A7 /* LaunchScreen.storyboard */; };
+		9882EDE028D7D80300C7FC1B /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9882EDDF28D7D80300C7FC1B /* K.swift */; };
 		9893AB5928D59B5A00CD9D1B /* iOSEngineerCodeCheckSlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9893AB5828D59B5A00CD9D1B /* iOSEngineerCodeCheckSlowTests.swift */; };
 		98D3FCA028D6F6270060D2AD /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D3FC9E28D6F6270060D2AD /* TableViewCell.swift */; };
 		98D3FCA128D6F6270060D2AD /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98D3FC9F28D6F6270060D2AD /* TableViewCell.xib */; };
@@ -58,6 +59,7 @@
 		983529CE28D556AD007354A7 /* RepositoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryModel.swift; sourceTree = "<group>"; };
 		98352A1528D55943007354A7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		98352A1628D55943007354A7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9882EDDF28D7D80300C7FC1B /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		9893AB5628D59B5A00CD9D1B /* iOSEngineerCodeCheckSlowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSEngineerCodeCheckSlowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9893AB5828D59B5A00CD9D1B /* iOSEngineerCodeCheckSlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSEngineerCodeCheckSlowTests.swift; sourceTree = "<group>"; };
 		98D3FC9E28D6F6270060D2AD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = iOSEngineerCodeCheck/Model/TableViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -121,10 +123,9 @@
 		983529C428D555A5007354A7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				983529CB28D556AD007354A7 /* RepositoryDataDelegate.swift */,
-				983529CD28D556AD007354A7 /* RepositoryDataManager.swift */,
-				983529CC28D556AD007354A7 /* RepositoryList.swift */,
-				983529CE28D556AD007354A7 /* RepositoryModel.swift */,
+				9882EDDF28D7D80300C7FC1B /* K.swift */,
+				9882EDDE28D7D62900C7FC1B /* ColorGradient */,
+				9882EDDD28D7D60100C7FC1B /* Repository */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -136,6 +137,24 @@
 				983529C728D5567F007354A7 /* RootViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		9882EDDD28D7D60100C7FC1B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				983529CB28D556AD007354A7 /* RepositoryDataDelegate.swift */,
+				983529CD28D556AD007354A7 /* RepositoryDataManager.swift */,
+				983529CC28D556AD007354A7 /* RepositoryList.swift */,
+				983529CE28D556AD007354A7 /* RepositoryModel.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		9882EDDE28D7D62900C7FC1B /* ColorGradient */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ColorGradient;
 			sourceTree = "<group>";
 		};
 		9893AB5728D59B5A00CD9D1B /* iOSEngineerCodeCheckSlowTests */ = {
@@ -371,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				983529D228D556AD007354A7 /* RepositoryModel.swift in Sources */,
+				9882EDE028D7D80300C7FC1B /* K.swift in Sources */,
 				983529CF28D556AD007354A7 /* RepositoryDataDelegate.swift in Sources */,
 				983529D028D556AD007354A7 /* RepositoryList.swift in Sources */,
 				98D3FCA028D6F6270060D2AD /* TableViewCell.swift in Sources */,

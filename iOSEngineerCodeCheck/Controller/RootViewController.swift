@@ -19,9 +19,11 @@ class RootViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+           
         // assigning self as the searchBarDelegate
         SchBr.delegate = self
         repoDataManager.delegate = self
+        
         tableView.accessibilityIdentifier = "RepoListTable"
         SchBr.accessibilityIdentifier = "SearchBar"
         navigationController?.navigationBar.accessibilityIdentifier = "NavBar"

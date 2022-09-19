@@ -10,15 +10,23 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
     
-   
+    @IBOutlet weak var cellBackgroundColorView: UIView!
+    
     @IBOutlet weak var repoTitleLabel: UILabel!
     @IBOutlet weak var repoLanguageLabel: UILabel!
     @IBOutlet weak var starImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        // starImage.isHidden = true
+
+        print(cellBackgroundColorView.bounds)
+        
+        cellBackgroundColorView.backgroundColor = UIColor.clear
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100)
+        gradientLayer.colors = [UIColor.black.cgColor, UIColor.darkGray.cgColor]
+        cellBackgroundColorView.layer.insertSublayer(gradientLayer, at: 0)
+       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
