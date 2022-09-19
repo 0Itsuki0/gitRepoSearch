@@ -95,26 +95,37 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rF8-tS-UVt">
-                                <rect key="frame" x="314" y="70" width="100" height="50"/>
+                            <view hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rF8-tS-UVt">
+                                <rect key="frame" x="214" y="70" width="200" height="100"/>
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aMN-UL-Bu5">
-                                        <rect key="frame" x="25.5" y="9.5" width="51" height="31"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="75.5" y="45" width="51" height="31"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <action selector="starSwitchPress:" destination="jN4-Rp-zsk" eventType="valueChanged" id="5xf-MT-liY"/>
                                         </connections>
                                     </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Star Repository Only" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vs-Lx-n4T">
+                                        <rect key="frame" x="10" y="10" width="154.5" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="ajF-dt-1Ah"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="VT0-Z1-3pi"/>
-                                    <constraint firstAttribute="height" constant="50" id="kcQ-lw-zsd"/>
+                                    <constraint firstItem="aMN-UL-Bu5" firstAttribute="top" secondItem="7vs-Lx-n4T" secondAttribute="bottom" constant="15" id="Phq-A3-cAd"/>
+                                    <constraint firstAttribute="width" constant="200" id="VT0-Z1-3pi"/>
+                                    <constraint firstAttribute="height" constant="100" id="kcQ-lw-zsd"/>
+                                    <constraint firstItem="7vs-Lx-n4T" firstAttribute="leading" secondItem="rF8-tS-UVt" secondAttribute="leading" constant="10" id="kea-RK-7av"/>
                                     <constraint firstItem="aMN-UL-Bu5" firstAttribute="centerX" secondItem="rF8-tS-UVt" secondAttribute="centerX" id="s3E-69-4R0"/>
-                                    <constraint firstItem="aMN-UL-Bu5" firstAttribute="centerY" secondItem="rF8-tS-UVt" secondAttribute="centerY" id="zuc-NH-vWg"/>
+                                    <constraint firstItem="7vs-Lx-n4T" firstAttribute="top" secondItem="rF8-tS-UVt" secondAttribute="top" constant="10" id="v0B-DW-QWv"/>
                                 </constraints>
                             </view>
                         </subviews>

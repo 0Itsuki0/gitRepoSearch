@@ -28,6 +28,16 @@ class RootViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        filterView.layer.cornerRadius = 10
+        filterView.layer.masksToBounds = true
+        filterView.layer.borderWidth = 2
+        filterView.layer.borderColor = UIColor.white.cgColor
+        
+        starSwitch.layer.cornerRadius = starSwitch.layer.bounds.height/2
+        starSwitch.layer.masksToBounds = true
+        starSwitch.layer.borderWidth = 1
+        starSwitch.layer.borderColor = UIColor.white.cgColor
                    
         // assigning self as the searchBarDelegate
         textField.delegate = self
