@@ -35,7 +35,7 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     
     func test_UISearchBar_typing() {
         // let searchBarElement = app.tables.searchFields["GitHubのリポジトリを検索"]
-        let searchBarElement = app.tables["RepoListTable"].otherElements["SearchBar"]
+        let searchBarElement = app.tables["RepoListTable"].otherElements["textField"]
         XCTAssertTrue(searchBarElement.exists, "search bar does not exists")
         searchBarElement.tap()
         searchBarElement.typeText("test")
@@ -44,7 +44,7 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     
     func test_navigation() {
         
-        let searchBarElement = app.tables["RepoListTable"].otherElements["SearchBar"]
+        let searchBarElement = app.tables["RepoListTable"].otherElements["textField"]
         XCTAssertTrue(searchBarElement.exists, "search bar does not exists")
         
         let repolisttableTable = app.tables["RepoListTable"]
@@ -79,7 +79,7 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     
     func test_tableViewScroll() {
         
-        let searchBarElement = app.tables["RepoListTable"].otherElements["SearchBar"]
+        let searchBarElement = app.tables["RepoListTable"].otherElements["textField"]
         let repolisttableTable = app.tables["RepoListTable"]
         
         searchBarElement.tap()
@@ -116,7 +116,7 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     
     func test_detailViewLabelExist() {
         
-        let searchBarElement = app.tables["RepoListTable"].otherElements["SearchBar"]
+        let searchBarElement = app.tables["RepoListTable"].otherElements["textField"]
         let repolisttableTable = app.tables["RepoListTable"]
         
         searchBarElement.tap()
@@ -161,7 +161,7 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     
     func test_alertView() {
         
-        let searchBarElement = app.tables["RepoListTable"].otherElements["SearchBar"]
+        let searchBarElement = app.tables["RepoListTable"].otherElements["textField"]
         
         searchBarElement.tap()
         searchBarElement.typeText("t. t")

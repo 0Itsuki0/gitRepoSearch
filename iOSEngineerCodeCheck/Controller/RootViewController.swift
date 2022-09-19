@@ -11,7 +11,11 @@ import UIKit
 class RootViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var SchBr: UISearchBar!
+    @IBOutlet weak var textField: UITextField!
+   
+    @IBOutlet weak var switchView: UIView!
+    
+    
     
     var repoList: [RepositoryModel] = []
     var idx: Int!
@@ -22,16 +26,28 @@ class RootViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
                    
         // assigning self as the searchBarDelegate
-        SchBr.delegate = self
+        textField.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
         repoDataManager.delegate = self
         
         tableView.accessibilityIdentifier = "RepoListTable"
-        SchBr.accessibilityIdentifier = "SearchBar"
+        textField.accessibilityIdentifier = "textField"
         navigationController?.navigationBar.accessibilityIdentifier = "NavBar"
       
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
 
     }
+    
+    
+    @IBAction func SearchButtonClick(_ sender: Any) {
+        textField.endEditing(true)
+    }
+    
+    @IBAction func FilterOptionButtonClick(_ sender: Any) {
+        switchView.isHidden = !switchView.isHidden
+    }
+    
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RootToDetail"{
@@ -70,27 +86,28 @@ extension RootViewController: UITableViewDelegate {
 }
 
 
-// MARK: - searchBarDelegate functions
+// MARK: - textField Delegate functions
 
-extension RootViewController: UISearchBarDelegate {
+extension RootViewController: UITextFieldDelegate {
     
     // return button pressed
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.endEditing(true)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
     }
     
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.endEditing(true)
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
         return true
     }
     
     // fetch result for an user input
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         // fetch request
-        if let word = searchBar.text {
+        if let word = textField.text {
             print(word)
             repoDataManager.fetchRepoData(word)
-            searchBar.text = ""
+            textField.text = ""
         }
     }
 }
