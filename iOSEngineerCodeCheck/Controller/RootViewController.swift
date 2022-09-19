@@ -13,11 +13,15 @@ class RootViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
    
-    @IBOutlet weak var switchView: UIView!
+    @IBOutlet weak var filterView: UIView!
     
-    
+    @IBOutlet weak var starSwitch: UISwitch!
     
     var repoList: [RepositoryModel] = []
+    var repoList_filtered: [RepositoryModel] = []
+    
+
+    
     var idx: Int!
     
     var repoDataManager = RepositoryDataManager()
@@ -45,14 +49,20 @@ class RootViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func FilterOptionButtonClick(_ sender: Any) {
-        switchView.isHidden = !switchView.isHidden
+        filterView.isHidden = !filterView.isHidden
     }
     
-   
+    @IBAction func starSwitchPress(_ sender: Any) {
+        repoList_filtered = repoList.filter { repo in
+            (!self.starSwitch.isOn || repo.showStar)
+        }
+        self.tableView.reloadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RootToDetail"{
             let dtl = segue.destination as! DetailViewController
-            dtl.repo = self.repoList[idx]
+            dtl.repo = self.repoList_filtered[idx]
         }
     }
 }
@@ -63,12 +73,12 @@ class RootViewController: UIViewController, UITableViewDataSource {
 extension RootViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repoList.count
+        return repoList_filtered.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! TableViewCell
-        let rp = repoList[indexPath.row]
+        let rp = repoList_filtered[indexPath.row]
         cell.repoTitleLabel.text = rp.full_name ?? ""
         cell.repoLanguageLabel.text = rp.language ?? ""
         cell.starImage.isHidden = !rp.showStar
@@ -118,6 +128,10 @@ extension RootViewController: RepositoryDataDelegate {
     func carryRepoData(_ repositoryDataManager: RepositoryDataManager, didFetchRepoData repoData: [RepositoryModel]) {
         DispatchQueue.main.async {
             self.repoList = repoData
+            self.repoList_filtered = self.repoList.filter { repo in
+                (!self.starSwitch.isOn || repo.showStar)
+            }
+            
             self.tableView.reloadData()
         }
     }

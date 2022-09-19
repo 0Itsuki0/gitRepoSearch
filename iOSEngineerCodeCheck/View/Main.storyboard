@@ -98,10 +98,14 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rF8-tS-UVt">
                                 <rect key="frame" x="314" y="70" width="100" height="50"/>
                                 <subviews>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aMN-UL-Bu5">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aMN-UL-Bu5">
                                         <rect key="frame" x="25.5" y="9.5" width="51" height="31"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="starSwitchPress:" destination="jN4-Rp-zsk" eventType="valueChanged" id="5xf-MT-liY"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -133,7 +137,8 @@
                     <navigationItem key="navigationItem" title="GitHub Repository Search" largeTitleDisplayMode="always" id="JbT-oF-fTZ"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
-                        <outlet property="switchView" destination="rF8-tS-UVt" id="kvx-GR-y1G"/>
+                        <outlet property="filterView" destination="rF8-tS-UVt" id="kvx-GR-y1G"/>
+                        <outlet property="starSwitch" destination="aMN-UL-Bu5" id="m9d-ca-p0c"/>
                         <outlet property="tableView" destination="0ag-CT-HVZ" id="f43-6a-coC"/>
                         <outlet property="textField" destination="ILU-BY-fLC" id="Wgc-I0-S2f"/>
                         <segue destination="AHY-RL-7mG" kind="show" identifier="RootToDetail" id="VB3-iS-dtK"/>
