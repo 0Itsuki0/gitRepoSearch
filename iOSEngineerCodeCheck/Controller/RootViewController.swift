@@ -19,21 +19,61 @@ class RootViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var langButtonSelectAll: UIButton!
     
-    var repoList: [RepositoryModel] = []
-    var repoList_filtered: [RepositoryModel] = []
+    @IBOutlet weak var langButtonC: UIButton!
+    @IBOutlet weak var langButtonCPlusPlus: UIButton!
+    @IBOutlet weak var langButtonCSharp: UIButton!
+    @IBOutlet weak var langButtonGo: UIButton!
+    @IBOutlet weak var langButtonJava: UIButton!
+    @IBOutlet weak var langButtonJavaScript: UIButton!
+    @IBOutlet weak var langButtonPHP: UIButton!
+    @IBOutlet weak var langButtonRuby: UIButton!
+    @IBOutlet weak var langButtonPython: UIButton!
+    @IBOutlet weak var langButtonScala: UIButton!
+    @IBOutlet weak var langButtonTypeScript: UIButton!
+    @IBOutlet weak var langButtonOther: UIButton!
+    
+    private var langButtonList: [UIButton] = []
+    
+    
+    private var repoList: [RepositoryModel] = []
+    private var repoList_filtered: [RepositoryModel] = []
     
 
     
-    var idx: Int!
+    private var idx: Int!
     
-    var repoDataManager = RepositoryDataManager()
+    private var repoDataManager = RepositoryDataManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        langButtonList = [langButtonC, langButtonCPlusPlus, langButtonCSharp, langButtonGo, langButtonJava, langButtonJavaScript, langButtonPHP, langButtonRuby, langButtonPython, langButtonScala, langButtonTypeScript, langButtonOther]
+
+        
         addBorderRoundCorner(toView: filterView as UIView, borderWidth: 2, cornerRadius: 10)
-        addBorderRoundCorner(toView: langButtonSelectAll as UIView, borderWidth: 1, cornerRadius: langButtonSelectAll.layer.bounds.height/2)
         addBorderRoundCorner(toView: starSwitch as UIView, borderWidth: 1, cornerRadius: starSwitch.layer.bounds.height/2)
+        
+        addBorderRoundCorner(toView: langButtonSelectAll as UIView, borderWidth: 1, cornerRadius: langButtonSelectAll.layer.bounds.height/2)
+        
+        
+        /*
+        addBorderRoundCorner(toView: langButtonC as UIView, borderWidth: 1, cornerRadius: langButtonC.layer.bounds.height/2)
+        addBorderRoundCorner(toView: langButtonCPlusPlus as UIView, borderWidth: 1, cornerRadius: langButtonCPlusPlus.layer.bounds.height/2)
+        addBorderRoundCorner(toView: langButtonCSharp as UIView, borderWidth: 1, cornerRadius: langButtonCSharp.layer.bounds.height/2)
+        addBorderRoundCorner(toView: langButtonGo as UIView, borderWidth: 1, cornerRadius: langButtonGo.layer.bounds.height/2)
+        addBorderRoundCorner(toView: langButtonJava as UIView, borderWidth: 1, cornerRadius: langButtonJava.layer.bounds.height/2)
+        addBorderRoundCorner(toView: langButtonJavaScript as UIView, borderWidth: 1, cornerRadius: langButtonJavaScript.layer.bounds.height/2)
+        addBorderRoundCorner(toView: langButtonPHP as UIView, borderWidth: 1, cornerRadius: langButtonPHP.layer.bounds.height/2)
+        addBorderRoundCorner(toView: langButtonRuby as UIView, borderWidth: 1, cornerRadius: langButtonRuby.layer.bounds.height/2)
+        addBorderRoundCorner(toView: langButtonPython as UIView, borderWidth: 1, cornerRadius: langButtonPython.layer.bounds.height/2)
+        addBorderRoundCorner(toView: langButtonScala as UIView, borderWidth: 1, cornerRadius: langButtonScala.layer.bounds.height/2)
+        addBorderRoundCorner(toView: langButtonTypeScript as UIView, borderWidth: 1, cornerRadius: langButtonTypeScript.layer.bounds.height/2)
+        addBorderRoundCorner(toView: langButtonOther as UIView, borderWidth: 1, cornerRadius: langButtonOther.layer.bounds.height/2)
+        */
+        
+        for button in langButtonList {
+            addBorderRoundCorner(toView: button as UIView, borderWidth: 1, cornerRadius: button.layer.bounds.height/2)
+        }
         
         // assigning self as the searchBarDelegate
         textField.delegate = self
@@ -84,14 +124,21 @@ class RootViewController: UIViewController, UITableViewDataSource {
     
     
     @IBAction func LangFilterPress(_ sender: UIButton) {
-        if sender.isSelected {
-            sender.backgroundColor = UIColor.white
+        
+        setButtonBackgroundColor(forButton: sender)
+        
+        if sender == langButtonSelectAll {
+            for button in langButtonList {
+                button.isSelected = sender.isSelected
+                setButtonBackgroundColor(forButton: button)
+            }
         }
-        else {
-            sender.backgroundColor = UIColor.lightGray
-        }
+        
+        // manage list for filters selcted
+        // TODO!!!
+        
+        
     }
-    
     
     
     @IBAction func tapGestureRecognized(_ sender: Any) {
@@ -190,6 +237,7 @@ extension RootViewController: RepositoryDataDelegate {
     }
 }
 
+// MARK: - other helper functions
 
 extension RootViewController {
     
@@ -198,5 +246,14 @@ extension RootViewController {
         view.layer.masksToBounds = true
         view.layer.borderWidth = borderWidth
         view.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    private func setButtonBackgroundColor(forButton button: UIButton) {
+        if button.isSelected {
+            button.backgroundColor = UIColor.white
+        }
+        else {
+            button.backgroundColor = UIColor.lightGray
+        }
     }
 }

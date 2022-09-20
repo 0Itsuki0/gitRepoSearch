@@ -415,7 +415,19 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="filterView" destination="rF8-tS-UVt" id="kvx-GR-y1G"/>
+                        <outlet property="langButtonC" destination="8Rv-WP-VWC" id="MeQ-J1-m43"/>
+                        <outlet property="langButtonCPlusPlus" destination="BJc-2d-TE6" id="sq5-AG-hLl"/>
+                        <outlet property="langButtonCSharp" destination="NoH-ca-HTe" id="AVh-0j-gXa"/>
+                        <outlet property="langButtonGo" destination="iq2-K3-M2D" id="nsO-mw-Ebp"/>
+                        <outlet property="langButtonJava" destination="Y6J-9A-6oO" id="T7d-mR-ugy"/>
+                        <outlet property="langButtonJavaScript" destination="YUf-Ks-min" id="YuQ-xK-oov"/>
+                        <outlet property="langButtonOther" destination="kEe-Gk-Yqg" id="3Bo-gk-dRZ"/>
+                        <outlet property="langButtonPHP" destination="jyg-Zv-EU1" id="YrB-QB-HWn"/>
+                        <outlet property="langButtonPython" destination="SEN-pB-pS3" id="hnO-xd-Vl5"/>
+                        <outlet property="langButtonRuby" destination="j8z-I1-69I" id="Yon-fL-YCu"/>
+                        <outlet property="langButtonScala" destination="Tf3-Io-5tM" id="l5x-Nu-eS9"/>
                         <outlet property="langButtonSelectAll" destination="kb5-yx-myl" id="ZWX-9Z-z3Z"/>
+                        <outlet property="langButtonTypeScript" destination="Shh-TR-dSk" id="ggT-rT-xBz"/>
                         <outlet property="starSwitch" destination="aMN-UL-Bu5" id="m9d-ca-p0c"/>
                         <outlet property="tableView" destination="0ag-CT-HVZ" id="f43-6a-coC"/>
                         <outlet property="textField" destination="ILU-BY-fLC" id="Wgc-I0-S2f"/>
