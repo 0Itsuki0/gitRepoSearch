@@ -17,6 +17,8 @@ class RootViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var starSwitch: UISwitch!
     
+    @IBOutlet weak var langButtonSelectAll: UIButton!
+    
     var repoList: [RepositoryModel] = []
     var repoList_filtered: [RepositoryModel] = []
     
@@ -29,16 +31,10 @@ class RootViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        filterView.layer.cornerRadius = 10
-        filterView.layer.masksToBounds = true
-        filterView.layer.borderWidth = 2
-        filterView.layer.borderColor = UIColor.white.cgColor
+        addBorderRoundCorner(toView: filterView as UIView, borderWidth: 2, cornerRadius: 10)
+        addBorderRoundCorner(toView: langButtonSelectAll as UIView, borderWidth: 1, cornerRadius: langButtonSelectAll.layer.bounds.height/2)
+        addBorderRoundCorner(toView: starSwitch as UIView, borderWidth: 1, cornerRadius: starSwitch.layer.bounds.height/2)
         
-        starSwitch.layer.cornerRadius = starSwitch.layer.bounds.height/2
-        starSwitch.layer.masksToBounds = true
-        starSwitch.layer.borderWidth = 1
-        starSwitch.layer.borderColor = UIColor.white.cgColor
-                   
         // assigning self as the searchBarDelegate
         textField.delegate = self
         self.tableView.dataSource = self
@@ -85,6 +81,17 @@ class RootViewController: UIViewController, UITableViewDataSource {
         }
  
     }
+    
+    
+    @IBAction func LangFilterPress(_ sender: UIButton) {
+        if sender.isSelected {
+            sender.backgroundColor = UIColor.white
+        }
+        else {
+            sender.backgroundColor = UIColor.lightGray
+        }
+    }
+    
     
     
     @IBAction func tapGestureRecognized(_ sender: Any) {
@@ -180,5 +187,16 @@ extension RootViewController: RepositoryDataDelegate {
         DispatchQueue.main.async {
             self.present(alert, animated: true)
         }
+    }
+}
+
+
+extension RootViewController {
+    
+    private func addBorderRoundCorner(toView view: UIView, borderWidth: CGFloat, cornerRadius: CGFloat) {
+        view.layer.cornerRadius = cornerRadius
+        view.layer.masksToBounds = true
+        view.layer.borderWidth = borderWidth
+        view.layer.borderColor = UIColor.white.cgColor
     }
 }
