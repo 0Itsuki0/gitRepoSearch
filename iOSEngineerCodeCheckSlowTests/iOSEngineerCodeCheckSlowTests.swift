@@ -74,7 +74,7 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
         rootVC.langButtonC.isSelected = false
         rootVC.sortNewestButton.isSelected = true
         
-        let filteredList = sut_repositoryDataManager.manageRepoList(starSwitch: rootVC.starSwitch, langButtons: rootVC.langButtonList, repoList: repoDataList ?? [], dateSortType: .byNewest, starSortType: .noSort)
+        let filteredList = sut_repositoryDataManager.manageRepoList(starSwitch: rootVC.starSwitch, langButtons: rootVC.langButtonList, repoList: repoDataList ?? [], sortType: .byNewest)
           
   
         var currentDate = stringToDate(dateTimeString: filteredList[0].updated_at)
@@ -123,7 +123,7 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
         rootVC.starSwitch.isOn = true
         rootVC.langButtonC.isSelected = false
         
-        let filteredList = sut_repositoryDataManager.manageRepoList(starSwitch: rootVC.starSwitch, langButtons: rootVC.langButtonList, repoList: repoDataList ?? [], dateSortType: .noSort, starSortType: .Ascending)
+        let filteredList = sut_repositoryDataManager.manageRepoList(starSwitch: rootVC.starSwitch, langButtons: rootVC.langButtonList, repoList: repoDataList ?? [], sortType: .byAscendingStar)
           
   
         var currentCount = 0
