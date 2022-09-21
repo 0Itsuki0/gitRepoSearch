@@ -74,7 +74,7 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
         rootVC.langButtonC.isSelected = false
         rootVC.sortNewestButton.isSelected = true
         
-        let filteredList = sut_repositoryDataManager.manageRepoList(starSwitch: rootVC.starSwitch, langButtons: rootVC.langButtonList, repoList: repoDataList ?? [], sortType: .byNewest)
+        let filteredList = sut_repositoryDataManager.manageRepoList(starSwitch: rootVC.starSwitch, langButtons: rootVC.langButtonList, repoList: repoDataList ?? [], dateSortType: .byNewest)
           
   
         var currentDate = stringToDate(dateTimeString: filteredList[0].updated_at)

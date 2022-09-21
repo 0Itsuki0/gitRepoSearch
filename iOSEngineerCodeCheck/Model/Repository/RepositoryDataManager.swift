@@ -115,12 +115,13 @@ struct RepositoryDataManager {
     }
     
     
-    func manageRepoList(starSwitch: UISwitch, langButtons: [UIButton], repoList: [RepositoryModel], sortType: K.sortTypeDate) -> [RepositoryModel] {
+    func manageRepoList(starSwitch: UISwitch, langButtons: [UIButton], repoList: [RepositoryModel], dateSortType: K.sortTypeDate, starSortType: K.sortTypeCount) -> [RepositoryModel] {
         
         let repoList_filtered = filterRepoList(starSwitch: starSwitch, langButtons: langButtons, repoList: repoList)
-        let repoList_sorted = sortRepoList(sortType: sortType, repoList: repoList_filtered)
+        let repoList_sorted_date = sortRepoListByUpdateDate(sortType: dateSortType, repoList: repoList_filtered)
+        let repoList_sorted_count = sortRepoListByStarCount(sortType: starSortType, repoList: repoList_sorted_date)
         
-        return repoList_sorted
+        return repoList_sorted_count
     }
     
     
@@ -151,7 +152,7 @@ struct RepositoryDataManager {
         return repoList_filtered
     }
     
-    private func sortRepoList(sortType: K.sortTypeDate, repoList: [RepositoryModel]) -> [RepositoryModel] {
+    private func sortRepoListByUpdateDate(sortType: K.sortTypeDate, repoList: [RepositoryModel]) -> [RepositoryModel] {
         var sortedList: [RepositoryModel] = []
         switch sortType {
         case .byNewest:
@@ -164,8 +165,22 @@ struct RepositoryDataManager {
             sortedList = repoList
         }
         return sortedList
-
     }
+    
+    private func sortRepoListByStarCount(sortType: K.sortTypeCount, repoList: [RepositoryModel]) -> [RepositoryModel] {
+        var sortedList: [RepositoryModel] = []
+        switch sortType {
+        case .Ascending:
+            sortedList = repoList.sorted(by: { ($0.stargazers_count ?? 0) < ($1.stargazers_count ?? 0) })
+        case .Descending:
+                sortedList = repoList.sorted(by: { ($0.stargazers_count ?? 0) > ($1.stargazers_count ?? 0) })
+        default:
+            sortedList = repoList
+        }
+        return sortedList
+    }
+    
+    
     
     // format time string in yyyy-MM-ddTHH:mm:ssZ format to yyyy/MM/dd format
     func formatDateTime(dateTimeString: String) -> String {

@@ -46,22 +46,34 @@
                                     <constraint firstAttribute="height" constant="90" id="xPf-qH-kFc"/>
                                 </constraints>
                             </stackView>
-                            <imageView hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvv-fL-kiC">
-                                <rect key="frame" x="364.66666666666669" y="35.666666666666664" width="29.333333333333314" height="28"/>
-                                <color key="tintColor" red="0.99708908796310425" green="0.98848003149032593" blue="0.0054007517173886299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <imageReference key="image" image="star.fill" catalog="system" symbolScale="large" renderingMode="template"/>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" spacing="-7" translatesAutoresizingMaskIntoConstraints="NO" id="g32-Fu-kks">
+                                <rect key="frame" x="359.33333333333331" y="15" width="34.666666666666686" height="70"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvv-fL-kiC">
+                                        <rect key="frame" x="5.3333333333333695" y="-4.3333333333333357" width="29.333333333333329" height="46.333333333333336"/>
+                                        <color key="tintColor" red="0.99708908796310425" green="0.98848003149032593" blue="0.0054007517173886299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <imageReference key="image" image="star.fill" catalog="system" symbolScale="large" renderingMode="template"/>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Count" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXg-X0-16S">
+                                        <rect key="frame" x="0.0" y="31.666666666666661" width="34.666666666666664" height="38.333333333333343"/>
+                                        <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="7Ip-Nf-bgd"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="DPz-VS-Rrc" firstAttribute="leading" secondItem="ZQO-JR-uGH" secondAttribute="leading" constant="20" id="1tf-ME-hzd"/>
-                            <constraint firstItem="fvv-fL-kiC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DPz-VS-Rrc" secondAttribute="trailing" constant="20" id="2tq-pS-bPV"/>
-                            <constraint firstAttribute="trailing" secondItem="fvv-fL-kiC" secondAttribute="trailing" constant="20" id="Cwf-mY-Xpw"/>
                             <constraint firstItem="DPz-VS-Rrc" firstAttribute="centerY" secondItem="ZQO-JR-uGH" secondAttribute="centerY" id="GMA-WO-Aoy"/>
-                            <constraint firstItem="fvv-fL-kiC" firstAttribute="centerY" secondItem="ZQO-JR-uGH" secondAttribute="centerY" id="Jd3-so-2jV"/>
                             <constraint firstItem="DPz-VS-Rrc" firstAttribute="centerY" secondItem="ZQO-JR-uGH" secondAttribute="centerY" id="Lc5-WZ-jZm"/>
-                            <constraint firstItem="fvv-fL-kiC" firstAttribute="centerY" secondItem="ZQO-JR-uGH" secondAttribute="centerY" id="Pph-d3-hDF"/>
+                            <constraint firstItem="g32-Fu-kks" firstAttribute="centerY" secondItem="ZQO-JR-uGH" secondAttribute="centerY" id="UkR-ND-fuE"/>
+                            <constraint firstAttribute="trailing" secondItem="g32-Fu-kks" secondAttribute="trailing" constant="20" id="cZ7-dM-bG9"/>
                             <constraint firstAttribute="height" constant="100" id="yx0-wq-7UN"/>
                         </constraints>
                     </view>
@@ -79,6 +91,7 @@
                 <outlet property="repoLanguageLabel" destination="iZZ-UH-HzE" id="uX1-Ut-X7p"/>
                 <outlet property="repoTitleLabel" destination="wac-7m-cjl" id="55b-PF-dnR"/>
                 <outlet property="repoUpdateDateLabel" destination="yM2-1M-CR8" id="q6Z-CH-zmK"/>
+                <outlet property="starCount" destination="eXg-X0-16S" id="Ugu-8r-ele"/>
                 <outlet property="starImage" destination="fvv-fL-kiC" id="lSW-Of-ivV"/>
             </connections>
             <point key="canvasLocation" x="44.615384615384613" y="-11.374407582938389"/>

@@ -16,6 +16,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var repoLanguageLabel: UILabel!
     @IBOutlet weak var repoUpdateDateLabel: UILabel!
     
+    @IBOutlet weak var starCount: UILabel!
     @IBOutlet weak var starImage: UIImageView!
     
     override func awakeFromNib() {
@@ -28,6 +29,7 @@ class TableViewCell: UITableViewCell {
         cellBackgroundColorView.layer.insertSublayer(gradientLayer, at: 0)
        
         starImage.accessibilityIdentifier = "starImage"
+        starCount.accessibilityIdentifier = "starCount"
         repoLanguageLabel.accessibilityIdentifier = "repoLanguageLabel"
         repoUpdateDateLabel.accessibilityIdentifier = "repoUpdateDateLabel"
         

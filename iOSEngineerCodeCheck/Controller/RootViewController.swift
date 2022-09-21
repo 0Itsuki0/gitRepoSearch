@@ -38,15 +38,11 @@ class RootViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var sortAscendingButton: UIButton!
     @IBOutlet weak var sortDescendingButton: UIButton!
     
-    
     var langButtonList: [UIButton] = []
-    
+    var sortingButtonList: [UIButton] = []
     
     private var repoList_original: [RepositoryModel] = []
     private var repoList_filteredSorted: [RepositoryModel] = []
-    
-    
-    
     
     private var idx: Int!
     
@@ -56,13 +52,13 @@ class RootViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         
         langButtonList = [langButtonC, langButtonCPlusPlus, langButtonCSharp, langButtonGo, langButtonJava, langButtonJavaScript, langButtonPHP, langButtonRuby, langButtonPython, langButtonScala, langButtonTypeScript, langButtonOther]
+        sortingButtonList = [sortNewestButton, sortOldestButton, sortAscendingButton, sortDescendingButton]
         
         // assigning self as delegates
         textField.delegate = self
         self.tableView.dataSource = self
         self.tableView.delegate = self
         repoDataManager.delegate = self
-        
         
         addBorderRoundCorner(toView: filterView as UIView, borderWidth: 2, cornerRadius: 10)
         addBorderRoundCorner(toView: starSwitch as UIView, borderWidth: 1, cornerRadius: starSwitch.layer.bounds.height/2)
@@ -88,7 +84,6 @@ class RootViewController: UIViewController, UITableViewDataSource {
         
         addBorderRoundCorner(toView: sortDescendingButton as UIView, borderWidth: 1, cornerRadius: sortDescendingButton.layer.bounds.height/2)
         setButtonBackgroundColor(forButton: sortDescendingButton)
-
         
         tableView.accessibilityIdentifier = "RepoListTable"
         textField.accessibilityIdentifier = "textField"
@@ -102,6 +97,7 @@ class RootViewController: UIViewController, UITableViewDataSource {
     
     
     @IBAction func SearchButtonClick(_ sender: Any) {
+        
         textField.endEditing(true)
         
         if let word = textField.text {
@@ -109,7 +105,6 @@ class RootViewController: UIViewController, UITableViewDataSource {
             repoDataManager.fetchRepoData(word)
             textField.text = ""
         }
-        
     }
     
     @IBAction func FilterOptionButtonClick(_ sender: Any) {
@@ -117,7 +112,8 @@ class RootViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func starSwitchPress(_ sender: Any) {
-        repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, sortType: getSortType())
+        
+        repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, dateSortType: getDateSortType(), starSortType: getCountSortType())
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -145,7 +141,7 @@ class RootViewController: UIViewController, UITableViewDataSource {
         }
         
         // manage list for filters selcted
-        repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, sortType: getSortType())
+        repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, dateSortType: getDateSortType(), starSortType: getCountSortType())
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -156,11 +152,13 @@ class RootViewController: UIViewController, UITableViewDataSource {
     
     @IBAction func sortByNewestButtonPress(_ sender: UIButton) {
         setButtonBackgroundColor(forButton: sender)
+        
         if (sender.isSelected) {
-            sortOldestButton.isSelected = false
-            setButtonBackgroundColor(forButton: sortOldestButton)
+            deselectSortButton(sortOnButton: sender)
         }
-        repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, sortType: getSortType())
+        
+        repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, dateSortType: getDateSortType(), starSortType: getCountSortType())
+        
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -168,12 +166,15 @@ class RootViewController: UIViewController, UITableViewDataSource {
     
     
     @IBAction func sortByOldestButtonPress(_ sender: UIButton) {
+        
         setButtonBackgroundColor(forButton: sender)
+        
         if (sender.isSelected) {
-            sortNewestButton.isSelected = false
-            setButtonBackgroundColor(forButton: sortNewestButton)
+            deselectSortButton(sortOnButton: sender)
         }
-        repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, sortType: getSortType())
+        
+        repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, dateSortType: getDateSortType(), starSortType: getCountSortType())
+        
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -181,10 +182,30 @@ class RootViewController: UIViewController, UITableViewDataSource {
     
     
     @IBAction func sortByAscendingStarButtonPress(_ sender: UIButton) {
+        
+        setButtonBackgroundColor(forButton: sender)
+        
+        if (sender.isSelected) {
+            deselectSortButton(sortOnButton: sender)
+        }
+        
+        repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, dateSortType: getDateSortType(), starSortType: getCountSortType())
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     
     @IBAction func sortByDescendingStarButtonPress(_ sender: UIButton) {
+        setButtonBackgroundColor(forButton: sender)
+        if (sender.isSelected) {
+            deselectSortButton(sortOnButton: sender)
+        }
+        repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, dateSortType: getDateSortType(), starSortType: getCountSortType())
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     
@@ -221,6 +242,7 @@ extension RootViewController: UITableViewDelegate {
         cell.repoLanguageLabel.text = "Language: " + (rp.language ?? "(Unspecified)")
         cell.repoUpdateDateLabel.text = "Latest Update: " + repoDataManager.formatDateTime(dateTimeString: rp.updated_at ?? "")
         cell.starImage.isHidden = !rp.showStar
+        cell.starCount.text = "\(rp.stargazers_count ?? 0) stars"
         cell.tag = indexPath.row
         cell.accessibilityIdentifier = String(indexPath.row)
         return cell
@@ -260,7 +282,7 @@ extension RootViewController: RepositoryDataDelegate {
     func carryRepoData(_ repositoryDataManager: RepositoryDataManager, didFetchRepoData repoData: [RepositoryModel]) {
         DispatchQueue.main.async { [self] in
             repoList_original = repoData
-            repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, sortType: getSortType())
+            repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, dateSortType: getDateSortType(), starSortType: getCountSortType())
             tableView.reloadData()
             
             if (repoList_original.count == 0) {
@@ -302,7 +324,7 @@ extension RootViewController {
         }
     }
     
-    private func getSortType() -> K.sortTypeDate {
+    private func getDateSortType() -> K.sortTypeDate {
         
         if sortNewestButton.isSelected {
             return K.sortTypeDate.byNewest
@@ -312,6 +334,27 @@ extension RootViewController {
             return K.sortTypeDate.noSort
         }
     }
+    
+    private func getCountSortType() -> K.sortTypeCount {
+        
+        if sortAscendingButton.isSelected {
+            return K.sortTypeCount.Ascending
+        } else if sortDescendingButton.isSelected {
+            return K.sortTypeCount.Descending
+        } else {
+            return K.sortTypeCount.noSort
+        }
+    }
+    
+    private func deselectSortButton(sortOnButton: UIButton) {
+        for button in sortingButtonList {
+            if button != sortOnButton {
+                button.isSelected = false
+                setButtonBackgroundColor(forButton: button)
+            }
+        }
+    }
+    
     
     private func showAlert(withMessage message: String) {
         
