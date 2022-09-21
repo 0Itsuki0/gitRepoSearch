@@ -54,6 +54,43 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
         XCTAssertNotNil(imgData, "fail in fetching Image Data")
     }
     
+    
+    func test_RepositoryDataMangager_filterRepoList() {
+        
+        expectation_testSuccess = expectation(description: "fetch repository data")
+        sut_repositoryDataManager.fetchRepoData("test")
+        waitForExpectations(timeout: 10)
+        XCTAssertNotNil(repoDataList, "fail in fetching repository Data")
+        
+        // button
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let rootVC = storyboard.instantiateViewController(withIdentifier: "RootViewController") as? RootViewController
+        guard let rootVC = rootVC else {
+            return
+        }
+        
+        rootVC.loadViewIfNeeded()
+        print(rootVC.langButtonGo.isSelected)
+        rootVC.starSwitch.isOn = true
+        rootVC.langButtonC.isSelected = false
+        
+        let filteredList = sut_repositoryDataManager.filterRepoList(starSwitch: rootVC.starSwitch, langButtons: rootVC.langButtonList, repoList: repoDataList ?? [])
+          
+        for repo in filteredList {
+            XCTAssertTrue(rootVC.starSwitch.isOn == repo.showStar, "failed in filtering star repository")
+            
+            for langButton in rootVC.langButtonList {
+                if langButton.titleLabel?.text == repo.language {
+                    XCTAssertTrue(langButton.isSelected, "failed in language filtering for major language.")
+                } else if (langButton.titleLabel?.text == "Other" && !K.languages.allCases.contains(where: { $0.rawValue == (repo.language ?? "")})) {
+                    XCTAssertTrue(langButton.isSelected == true, "failed in language filtering for other languages.")
+                }
+            }
+        }
+        
+    }
+    
+    
     func test_RepositoryDataMangager_fetchRepoData_InvalidInput() {
         // Act
         expectation_testFailure = expectation(description: "try fetch repository data: expected to fail")
@@ -75,6 +112,7 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
         waitForExpectations(timeout: 10)
         XCTAssertNil(imgData, "fetch request went through when it supposes to fail")
     }
+    
     
     
     

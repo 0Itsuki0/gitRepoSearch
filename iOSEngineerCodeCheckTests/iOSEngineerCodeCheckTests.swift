@@ -71,6 +71,8 @@ class iOSEngineerCodeCheckTests: XCTestCase {
         )
     }
     
+    // tests for private funtion decodeRepoData
+    /*
     func test_RepositoryDataMangager_decodeRepoData_validData() throws {
         let result_expected = sut_repoList.items
         let encodedRepositoryList = try JSONEncoder().encode(sut_repoList)
@@ -88,9 +90,11 @@ class iOSEngineerCodeCheckTests: XCTestCase {
         XCTAssertNil(result, "decode success when it is supposed to fail due to invalid data")
     }
     
+     */
 
-    // MARK: - performance test
+    // MARK: - performance test for private function
 
+    /*
     func test_decoderPerformance() throws {
         let data = try JSONEncoder().encode(self.sut_repoList.items)
 
@@ -106,6 +110,7 @@ class iOSEngineerCodeCheckTests: XCTestCase {
         }
         
     }
+    */
     
     
 }

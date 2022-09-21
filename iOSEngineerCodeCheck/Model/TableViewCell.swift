@@ -26,6 +26,7 @@ class TableViewCell: UITableViewCell {
         cellBackgroundColorView.layer.insertSublayer(gradientLayer, at: 0)
        
         starImage.accessibilityIdentifier = "starImage"
+        repoLanguageLabel.accessibilityIdentifier = "repoLanguageLabel"
         
     }
 

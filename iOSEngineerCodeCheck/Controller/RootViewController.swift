@@ -32,7 +32,7 @@ class RootViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var langButtonTypeScript: UIButton!
     @IBOutlet weak var langButtonOther: UIButton!
     
-    private var langButtonList: [UIButton] = []
+    var langButtonList: [UIButton] = []
     
     
     private var repoList: [RepositoryModel] = []
@@ -48,7 +48,13 @@ class RootViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         
         langButtonList = [langButtonC, langButtonCPlusPlus, langButtonCSharp, langButtonGo, langButtonJava, langButtonJavaScript, langButtonPHP, langButtonRuby, langButtonPython, langButtonScala, langButtonTypeScript, langButtonOther]
-
+        
+        // assigning self as delegates
+        textField.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        repoDataManager.delegate = self
+        
         
         addBorderRoundCorner(toView: filterView as UIView, borderWidth: 2, cornerRadius: 10)
         addBorderRoundCorner(toView: starSwitch as UIView, borderWidth: 1, cornerRadius: starSwitch.layer.bounds.height/2)
@@ -58,14 +64,11 @@ class RootViewController: UIViewController, UITableViewDataSource {
         for button in langButtonList {
             addBorderRoundCorner(toView: button as UIView, borderWidth: 1, cornerRadius: button.layer.bounds.height/2)
             setButtonBackgroundColor(forButton: button)
+            button.accessibilityIdentifier = button.titleLabel?.text
         }
+        
         setButtonBackgroundColor(forButton: langButtonSelectAll)
-
-        // assigning self as the searchBarDelegate
-        textField.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        repoDataManager.delegate = self
+        langButtonSelectAll.accessibilityIdentifier = "langButtonSelectAll"
         
         tableView.accessibilityIdentifier = "RepoListTable"
         textField.accessibilityIdentifier = "textField"
@@ -122,15 +125,13 @@ class RootViewController: UIViewController, UITableViewDataSource {
         }
         
         // manage list for filters selcted
-        // TODO!!!
         repoList_filtered = repoDataManager.filterRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList)
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-        
-        
     }
+    
     
     
     @IBAction func tapGestureRecognized(_ sender: Any) {
@@ -198,22 +199,15 @@ extension RootViewController: UITextFieldDelegate {
 
 extension RootViewController: RepositoryDataDelegate {
     func carryRepoData(_ repositoryDataManager: RepositoryDataManager, didFetchRepoData repoData: [RepositoryModel]) {
-        DispatchQueue.main.async {
-            self.repoList = repoData
-            self.repoList_filtered = self.repoList.filter { repo in
-                (!self.starSwitch.isOn || repo.showStar)
-            }
-            self.tableView.reloadData()
-
-            if (self.repoList.count == 0) {
-                let alert = UIAlertController(title: "Warning", message: "No maching", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true)
-            }
-            else if (self.repoList_filtered.count == 0 && self.repoList.count != 0) {
-                let alert = UIAlertController(title: "Warning", message: "No starred repository matching; non stared repository found", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true)
+        DispatchQueue.main.async { [self] in
+            repoList = repoData
+            repoList_filtered = repoDataManager.filterRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList)
+            tableView.reloadData()
+            
+            if (repoList.count == 0) {
+                showAlert(withMessage: "No Matching")
+            } else if (repoList_filtered.count == 0 && repoList.count != 0) {
+                showAlert(withMessage: "No repository matching for the given filter")
             }
             
         }

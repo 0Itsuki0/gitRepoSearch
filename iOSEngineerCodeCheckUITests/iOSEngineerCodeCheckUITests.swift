@@ -148,6 +148,50 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     }
     
     
+    func testLanguageFilter() {
+        
+        let textFieldElement = app.textFields["textField"]
+        let repolisttableTable = app.tables["RepoListTable"]
+        
+        textFieldElement.tap()
+        textFieldElement.typeText("test")
+        
+        app.buttons["Return"].tap()
+        
+        
+        // wait for data to load
+        let tableCell_0 = repolisttableTable.cells["0"]
+        let exists = NSPredicate(format: "exists == 1")
+        let expectation = expectation(for: exists, evaluatedWith: tableCell_0)
+        waitForExpectations(timeout: 10, handler: nil)
+
+        XCTAssertTrue(tableCell_0.exists, "cell 0 is not on the table")
+        expectation.fulfill()
+        
+        
+        app.buttons["control center"].tap()
+        // unselect C
+        app.buttons["C"].tap()
+        app.buttons["C++"].tap()
+
+        app.buttons["control center"].tap()
+
+        
+        // wait for data to load
+        let cellCount = repolisttableTable.cells.count
+        
+        for i in 0..<cellCount {
+            let langLabel = repolisttableTable.cells[String(i)].staticTexts["repoLanguageLabel"]
+            if langLabel.exists {
+                XCTAssertTrue(langLabel.label != "C", "language filter does not work properly")
+                XCTAssertTrue(langLabel.label != "C++", "language filter does not work properly")
+            }
+        }
+        
+        
+    }
+    
+    
     
     func test_detailViewLabelExist() {
         
