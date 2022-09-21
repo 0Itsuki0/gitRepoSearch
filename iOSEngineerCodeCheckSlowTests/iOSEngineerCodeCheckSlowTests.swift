@@ -55,7 +55,7 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
     }
     
     
-    func test_RepositoryDataMangager_filterRepoList() {
+    func test_RepositoryDataMangager_filterRepoList_filteredAndSortByDate() {
         
         expectation_testSuccess = expectation(description: "fetch repository data")
         sut_repositoryDataManager.fetchRepoData("test")
@@ -74,7 +74,7 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
         rootVC.langButtonC.isSelected = false
         rootVC.sortNewestButton.isSelected = true
         
-        let filteredList = sut_repositoryDataManager.manageRepoList(starSwitch: rootVC.starSwitch, langButtons: rootVC.langButtonList, repoList: repoDataList ?? [], dateSortType: .byNewest)
+        let filteredList = sut_repositoryDataManager.manageRepoList(starSwitch: rootVC.starSwitch, langButtons: rootVC.langButtonList, repoList: repoDataList ?? [], dateSortType: .byNewest, starSortType: .noSort)
           
   
         var currentDate = stringToDate(dateTimeString: filteredList[0].updated_at)
@@ -104,6 +104,49 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
         
     }
     
+    
+    func test_RepositoryDataMangager_sortByStar() {
+        
+        expectation_testSuccess = expectation(description: "fetch repository data")
+        sut_repositoryDataManager.fetchRepoData("test")
+        waitForExpectations(timeout: 10)
+        XCTAssertNotNil(repoDataList, "fail in fetching repository Data")
+        
+        // button
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let rootVC = storyboard.instantiateViewController(withIdentifier: "RootViewController") as? RootViewController
+        guard let rootVC = rootVC else {
+            return
+        }
+        
+        rootVC.loadViewIfNeeded()
+        rootVC.starSwitch.isOn = true
+        rootVC.langButtonC.isSelected = false
+        
+        let filteredList = sut_repositoryDataManager.manageRepoList(starSwitch: rootVC.starSwitch, langButtons: rootVC.langButtonList, repoList: repoDataList ?? [], dateSortType: .noSort, starSortType: .Ascending)
+          
+  
+        var currentCount = 0
+        var prevCount = 0
+        
+        for repo in filteredList {
+
+            currentCount = repo.stargazers_count ?? 0
+            
+            XCTAssertTrue(currentCount >= prevCount, "failed in sorting by star Count")
+            prevCount = currentCount
+            
+            for langButton in rootVC.langButtonList {
+                if langButton.titleLabel?.text == repo.language {
+                    XCTAssertTrue(langButton.isSelected, "failed in language filtering for major language.")
+                } else if (langButton.titleLabel?.text == "Other" && !K.languages.allCases.contains(where: { $0.rawValue == (repo.language ?? "")})) {
+                    XCTAssertTrue(langButton.isSelected == true, "failed in language filtering for other languages.")
+                }
+            }
+            
+        }
+        
+    }
     
     func test_RepositoryDataMangager_fetchRepoData_InvalidInput() {
         // Act
