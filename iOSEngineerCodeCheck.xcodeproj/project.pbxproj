@@ -17,8 +17,7 @@
 		98352A1828D55943007354A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98352A1628D55943007354A7 /* LaunchScreen.storyboard */; };
 		9882EDE028D7D80300C7FC1B /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9882EDDF28D7D80300C7FC1B /* K.swift */; };
 		9893AB5928D59B5A00CD9D1B /* iOSEngineerCodeCheckSlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9893AB5828D59B5A00CD9D1B /* iOSEngineerCodeCheckSlowTests.swift */; };
-		989CB6E528DBDB2E008560ED /* SwiftyGif in Frameworks */ = {isa = PBXBuildFile; productRef = 989CB6E428DBDB2E008560ED /* SwiftyGif */; };
-		989CB6E728DBDB2E008560ED /* SwiftyGif-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 989CB6E628DBDB2E008560ED /* SwiftyGif-Dynamic */; };
+		989CB6EA28DBDC39008560ED /* SwiftyGif in Frameworks */ = {isa = PBXBuildFile; productRef = 989CB6E928DBDC39008560ED /* SwiftyGif */; };
 		98D3FCA028D6F6270060D2AD /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D3FC9E28D6F6270060D2AD /* TableViewCell.swift */; };
 		98D3FCA128D6F6270060D2AD /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98D3FC9F28D6F6270060D2AD /* TableViewCell.xib */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
@@ -91,8 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				989CB6E528DBDB2E008560ED /* SwiftyGif in Frameworks */,
-				989CB6E728DBDB2E008560ED /* SwiftyGif-Dynamic in Frameworks */,
+				989CB6EA28DBDC39008560ED /* SwiftyGif in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,8 +248,7 @@
 			);
 			name = iOSEngineerCodeCheck;
 			packageProductDependencies = (
-				989CB6E428DBDB2E008560ED /* SwiftyGif */,
-				989CB6E628DBDB2E008560ED /* SwiftyGif-Dynamic */,
+				989CB6E928DBDC39008560ED /* SwiftyGif */,
 			);
 			productName = iOSEngineerCodeCheck;
 			productReference = BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */;
@@ -330,7 +327,7 @@
 			);
 			mainGroup = BFD945D2244DC5E80012785A;
 			packageReferences = (
-				989CB6E328DBDB2E008560ED /* XCRemoteSwiftPackageReference "SwiftyGif" */,
+				989CB6E828DBDC39008560ED /* XCRemoteSwiftPackageReference "SwiftyGif" */,
 			);
 			productRefGroup = BFD945DC244DC5E80012785A /* Products */;
 			projectDirPath = "";
@@ -771,7 +768,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		989CB6E328DBDB2E008560ED /* XCRemoteSwiftPackageReference "SwiftyGif" */ = {
+		989CB6E828DBDC39008560ED /* XCRemoteSwiftPackageReference "SwiftyGif" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kirualex/SwiftyGif.git";
 			requirement = {
@@ -782,15 +779,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		989CB6E428DBDB2E008560ED /* SwiftyGif */ = {
+		989CB6E928DBDC39008560ED /* SwiftyGif */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 989CB6E328DBDB2E008560ED /* XCRemoteSwiftPackageReference "SwiftyGif" */;
+			package = 989CB6E828DBDC39008560ED /* XCRemoteSwiftPackageReference "SwiftyGif" */;
 			productName = SwiftyGif;
-		};
-		989CB6E628DBDB2E008560ED /* SwiftyGif-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 989CB6E328DBDB2E008560ED /* XCRemoteSwiftPackageReference "SwiftyGif" */;
-			productName = "SwiftyGif-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
