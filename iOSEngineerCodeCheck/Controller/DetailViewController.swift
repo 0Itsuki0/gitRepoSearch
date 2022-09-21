@@ -12,9 +12,11 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var ImgView: UIImageView!
     
+    @IBOutlet weak var starImageView: UIImageView!
     @IBOutlet weak var TtlLbl: UILabel!
     
     @IBOutlet weak var LangLbl: UILabel!
+    @IBOutlet weak var updatedDateLabel: UILabel!
     
     @IBOutlet weak var StrsLbl: UILabel!
     @IBOutlet weak var WchsLbl: UILabel!
@@ -39,8 +41,10 @@ class DetailViewController: UIViewController {
         ImgView.accessibilityIdentifier = "AvatarImage"
         
         TtlLbl.accessibilityIdentifier = "TitleLabel"
+        starImageView.accessibilityIdentifier = "starImage"
         
         LangLbl.accessibilityIdentifier = "LanguageLabel"
+        updatedDateLabel.accessibilityIdentifier = "updatedDateLabel"
         
         StrsLbl.accessibilityIdentifier = "StarsLabel"
         WchsLbl.accessibilityIdentifier = "WatchesLabel"
@@ -53,9 +57,11 @@ class DetailViewController: UIViewController {
         repoDataManager.fetchAvatarImage(from: repo.owner?.avatar_url)
         
         // update labels
-        TtlLbl.text = repo.full_name ?? ""
+        TtlLbl.text = repo.full_name ?? "(Untitled)"
+        starImageView.isHidden = !repo.showStar
 
         LangLbl.text = "Written in \(repo.language ?? "(Unspecified)" )"
+        updatedDateLabel.text = "Latest Update: " + repoDataManager.formatDateTime(dateTimeString: repo.updated_at ?? "")
 
         StrsLbl.text = "\(repo.stargazers_count ?? 0) stars"
         WchsLbl.text = "\(repo.wachers_count ?? 0) watchers"

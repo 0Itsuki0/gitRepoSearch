@@ -115,7 +115,16 @@ struct RepositoryDataManager {
     }
     
     
-    func filterRepoList(starSwitch: UISwitch, langButtons: [UIButton], repoList: [RepositoryModel]) -> [RepositoryModel] {
+    func manageRepoList(starSwitch: UISwitch, langButtons: [UIButton], repoList: [RepositoryModel], sortType: K.sortType) -> [RepositoryModel] {
+        
+        let repoList_filtered = filterRepoList(starSwitch: starSwitch, langButtons: langButtons, repoList: repoList)
+        let repoList_sorted = sortRepoList(sortType: sortType, repoList: repoList_filtered)
+        
+        return repoList_sorted
+    }
+    
+    
+    private func filterRepoList(starSwitch: UISwitch, langButtons: [UIButton], repoList: [RepositoryModel]) -> [RepositoryModel] {
         
         var repoList_filtered = repoList
         
@@ -142,8 +151,22 @@ struct RepositoryDataManager {
         return repoList_filtered
     }
     
-    
+    private func sortRepoList(sortType: K.sortType, repoList: [RepositoryModel]) -> [RepositoryModel] {
+        var sortedList: [RepositoryModel] = []
+        switch sortType {
+        case .byNewest:
+            sortedList = repoList.sorted(by: {
+                self.stringToDate(dateTimeString: $0.updated_at) > self.stringToDate(dateTimeString: $1.updated_at)})
+        case .byOldest:
+            sortedList = repoList.sorted(by: {
+                self.stringToDate(dateTimeString: $0.updated_at) < self.stringToDate(dateTimeString: $1.updated_at)})
+        default:
+            sortedList = repoList
+        }
+        return sortedList
 
+    }
+    
     // format time string in yyyy-MM-ddTHH:mm:ssZ format to yyyy/MM/dd format
     func formatDateTime(dateTimeString: String) -> String {
         let formatter_StringToDate = DateFormatter()
@@ -160,4 +183,16 @@ struct RepositoryDataManager {
         
         return formattedDateTime
     }
+    
+    private func stringToDate(dateTimeString: String?) -> Date {
+        guard let dateTimeString = dateTimeString else {
+            return Date(timeIntervalSince1970: TimeInterval(0))
+        }
+        let formatter_StringToDate = DateFormatter()
+        formatter_StringToDate.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
+        let time_dateTime = formatter_StringToDate.date(from: dateTimeString)
+        return time_dateTime ?? Date(timeIntervalSince1970: TimeInterval(0))
+    }
+    
+    
 }
