@@ -70,14 +70,27 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
         }
         
         rootVC.loadViewIfNeeded()
-        print(rootVC.langButtonGo.isSelected)
         rootVC.starSwitch.isOn = true
         rootVC.langButtonC.isSelected = false
+        rootVC.sortByNewestButton.isSelected = true
         
-        let filteredList = sut_repositoryDataManager.filterRepoList(starSwitch: rootVC.starSwitch, langButtons: rootVC.langButtonList, repoList: repoDataList ?? [])
+        let filteredList = sut_repositoryDataManager.manageRepoList(starSwitch: rootVC.starSwitch, langButtons: rootVC.langButtonList, repoList: repoDataList ?? [], sortType: .byNewest)
           
+  
+        var currentDate = stringToDate(dateTimeString: filteredList[0].updated_at)
+        var prevDate = Date.now
+        
         for repo in filteredList {
             XCTAssertTrue(rootVC.starSwitch.isOn == repo.showStar, "failed in filtering star repository")
+            
+            
+            currentDate = stringToDate(dateTimeString: repo.updated_at)
+            print(currentDate)
+            print(prevDate)
+            
+            
+            XCTAssertTrue(currentDate <= prevDate, "failed in sorting by newest order")
+            prevDate = currentDate
             
             for langButton in rootVC.langButtonList {
                 if langButton.titleLabel?.text == repo.language {
@@ -86,6 +99,7 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
                     XCTAssertTrue(langButton.isSelected == true, "failed in language filtering for other languages.")
                 }
             }
+            
         }
         
     }
@@ -159,7 +173,7 @@ extension iOSEngineerCodeCheckSlowTests: RepositoryDataDelegate {
         self.expectation_testSuccess?.fulfill()
         self.expectation_testSuccess = nil
     }
-
+    
     func carryError(_ repositoryDataManager: RepositoryDataManager, didFailWithError error: String) {
         self.repoDataList = nil
         self.imgData = nil
@@ -172,6 +186,19 @@ extension iOSEngineerCodeCheckSlowTests: RepositoryDataDelegate {
         self.expectation_testSuccess?.fulfill()
         self.expectation_testSuccess = nil
         
+    }
+}
+    
+extension iOSEngineerCodeCheckSlowTests{
+    
+    private func stringToDate(dateTimeString: String?) -> Date {
+        guard let dateTimeString = dateTimeString else {
+            return Date(timeIntervalSince1970: TimeInterval(0))
+        }
+        let formatter_StringToDate = DateFormatter()
+        formatter_StringToDate.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
+        let time_dateTime = formatter_StringToDate.date(from: dateTimeString)
+        return time_dateTime ?? Date(timeIntervalSince1970: TimeInterval(0))
     }
     
 }
