@@ -148,6 +148,7 @@ class RootViewController: UIViewController, UITableViewDataSource {
 }
 
 
+
 // MARK: - tableViewController functions
 
 extension RootViewController: UITableViewDelegate {
@@ -160,7 +161,8 @@ extension RootViewController: UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! TableViewCell
         let rp = repoList_filtered[indexPath.row]
         cell.repoTitleLabel.text = rp.full_name ?? ""
-        cell.repoLanguageLabel.text = rp.language ?? ""
+        cell.repoLanguageLabel.text = "Language: " + (rp.language ?? "(Unspecified)")
+        cell.repoUpdateDateLabel.text = "Latest Update: " + repoDataManager.formatDateTime(dateTimeString: rp.updated_at ?? "")
         cell.starImage.isHidden = !rp.showStar
         cell.tag = indexPath.row
         cell.accessibilityIdentifier = String(indexPath.row)

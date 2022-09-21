@@ -144,4 +144,20 @@ struct RepositoryDataManager {
     
     
 
+    // format time string in yyyy-MM-ddTHH:mm:ssZ format to yyyy/MM/dd format
+    func formatDateTime(dateTimeString: String) -> String {
+        let formatter_StringToDate = DateFormatter()
+        formatter_StringToDate.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
+        let time_dateTime = formatter_StringToDate.date(from: dateTimeString)
+        
+        guard let time_dateTime = time_dateTime else {
+            return "(Unknown)"
+        }
+        
+        let formatter_DateToString = DateFormatter()
+        formatter_DateToString.dateFormat = "yyyy/MM/dd"
+        let formattedDateTime = formatter_DateToString.string(from: time_dateTime)
+        
+        return formattedDateTime
+    }
 }

@@ -20,24 +20,30 @@
                     <view opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZQO-JR-uGH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="DPz-VS-Rrc">
-                                <rect key="frame" x="20.000000000000007" y="20" width="108.66666666666669" height="60"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" distribution="fillProportionally" alignment="top" spacing="-7" translatesAutoresizingMaskIntoConstraints="NO" id="DPz-VS-Rrc">
+                                <rect key="frame" x="19.999999999999993" y="5" width="99.333333333333314" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="RepoTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wac-7m-cjl">
-                                        <rect key="frame" x="0.0" y="0.0" width="108.66666666666667" height="38"/>
-                                        <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="95.666666666666671" height="52.333333333333336"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="22"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RepoLanguage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZZ-UH-HzE">
-                                        <rect key="frame" x="0.0" y="39" width="108.66666666666667" height="21"/>
-                                        <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="15"/>
+                                        <rect key="frame" x="0.0" y="45.333333333333336" width="86.666666666666671" height="30.333333333333336"/>
+                                        <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RepoUpdateDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yM2-1M-CR8" userLabel="RepoUpdateDate">
+                                        <rect key="frame" x="0.0" y="68.666666666666671" width="99.333333333333329" height="21.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="xPf-qH-kFc"/>
+                                    <constraint firstAttribute="height" constant="90" id="xPf-qH-kFc"/>
                                 </constraints>
                             </stackView>
                             <imageView hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvv-fL-kiC">
@@ -72,6 +78,7 @@
                 <outlet property="cellBackgroundColorView" destination="H2p-sc-9uM" id="U5Q-0o-dUD"/>
                 <outlet property="repoLanguageLabel" destination="iZZ-UH-HzE" id="uX1-Ut-X7p"/>
                 <outlet property="repoTitleLabel" destination="wac-7m-cjl" id="55b-PF-dnR"/>
+                <outlet property="repoUpdateDateLabel" destination="yM2-1M-CR8" id="q6Z-CH-zmK"/>
                 <outlet property="starImage" destination="fvv-fL-kiC" id="lSW-Of-ivV"/>
             </connections>
             <point key="canvasLocation" x="44.615384615384613" y="-11.374407582938389"/>

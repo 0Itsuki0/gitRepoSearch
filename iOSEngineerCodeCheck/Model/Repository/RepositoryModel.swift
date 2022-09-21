@@ -15,6 +15,7 @@ struct RepositoryModel: Codable, Equatable {
     let owner: OwnerModel?
     let html_url: String?
     let language: String?
+    let updated_at: String?
     let stargazers_count: Int?
     let wachers_count: Int?
     let forks_count: Int?
