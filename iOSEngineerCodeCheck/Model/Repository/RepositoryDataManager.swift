@@ -58,7 +58,7 @@ struct RepositoryDataManager {
     }
     
     
-    func decodeRepoData(_ data: Data) -> [RepositoryModel]?{
+    private func decodeRepoData(_ data: Data) -> [RepositoryModel]?{
         let decoder = JSONDecoder()
         do {
             let dataDecoded = try decoder.decode(RepositoryList.self, from: data)
@@ -113,6 +113,35 @@ struct RepositoryDataManager {
         }
         UIApplication.shared.open(url)
     }
+    
+    
+    func filterRepoList(starSwitch: UISwitch, langButtons: [UIButton], repoList: [RepositoryModel]) -> [RepositoryModel] {
+        
+        var repoList_filtered = repoList
+        
+        repoList_filtered = repoList_filtered.filter { repo in
+            (!starSwitch.isOn || repo.showStar)
+        }
+    
+        var tempList: [RepositoryModel] = []
+        
+        for langButton in langButtons {
+            if langButton.isSelected == true {
+                if langButton.titleLabel?.text != "Other" {
+                    tempList = tempList + repoList_filtered.filter { $0.language == langButton.titleLabel?.text }
+                } else {
+                    tempList = tempList + repoList_filtered.filter { repo in
+                        !K.languages.allCases.contains(where: { $0.rawValue == (repo.language ?? "")})
+                    }
+                }
+            }
+        }
+        
+        
+        repoList_filtered = tempList
+        return repoList_filtered
+    }
+    
     
 
 }

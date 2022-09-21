@@ -16,6 +16,18 @@ struct K {
     static let starThreshold: Int = 1000
     
 
-    
+    enum languages: String, CaseIterable {
+        case langC = "C"
+        case langCPlusPlus = "C++"
+        case CSharp = "C#"
+        case langGo = "Go"
+        case langJava = "Java"
+        case langJavaScript = "JavaScript"
+        case langPHP = "PHP"
+        case langPython = "Python"
+        case langRuby = "Ruby"
+        case langScala = "Scala"
+        case langTypeScript = "TypeScript"
+    }
     
 }

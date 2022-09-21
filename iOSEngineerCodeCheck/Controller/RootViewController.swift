@@ -55,26 +55,12 @@ class RootViewController: UIViewController, UITableViewDataSource {
         
         addBorderRoundCorner(toView: langButtonSelectAll as UIView, borderWidth: 1, cornerRadius: langButtonSelectAll.layer.bounds.height/2)
         
-        
-        /*
-        addBorderRoundCorner(toView: langButtonC as UIView, borderWidth: 1, cornerRadius: langButtonC.layer.bounds.height/2)
-        addBorderRoundCorner(toView: langButtonCPlusPlus as UIView, borderWidth: 1, cornerRadius: langButtonCPlusPlus.layer.bounds.height/2)
-        addBorderRoundCorner(toView: langButtonCSharp as UIView, borderWidth: 1, cornerRadius: langButtonCSharp.layer.bounds.height/2)
-        addBorderRoundCorner(toView: langButtonGo as UIView, borderWidth: 1, cornerRadius: langButtonGo.layer.bounds.height/2)
-        addBorderRoundCorner(toView: langButtonJava as UIView, borderWidth: 1, cornerRadius: langButtonJava.layer.bounds.height/2)
-        addBorderRoundCorner(toView: langButtonJavaScript as UIView, borderWidth: 1, cornerRadius: langButtonJavaScript.layer.bounds.height/2)
-        addBorderRoundCorner(toView: langButtonPHP as UIView, borderWidth: 1, cornerRadius: langButtonPHP.layer.bounds.height/2)
-        addBorderRoundCorner(toView: langButtonRuby as UIView, borderWidth: 1, cornerRadius: langButtonRuby.layer.bounds.height/2)
-        addBorderRoundCorner(toView: langButtonPython as UIView, borderWidth: 1, cornerRadius: langButtonPython.layer.bounds.height/2)
-        addBorderRoundCorner(toView: langButtonScala as UIView, borderWidth: 1, cornerRadius: langButtonScala.layer.bounds.height/2)
-        addBorderRoundCorner(toView: langButtonTypeScript as UIView, borderWidth: 1, cornerRadius: langButtonTypeScript.layer.bounds.height/2)
-        addBorderRoundCorner(toView: langButtonOther as UIView, borderWidth: 1, cornerRadius: langButtonOther.layer.bounds.height/2)
-        */
-        
         for button in langButtonList {
             addBorderRoundCorner(toView: button as UIView, borderWidth: 1, cornerRadius: button.layer.bounds.height/2)
+            setButtonBackgroundColor(forButton: button)
         }
-        
+        setButtonBackgroundColor(forButton: langButtonSelectAll)
+
         // assigning self as the searchBarDelegate
         textField.delegate = self
         self.tableView.dataSource = self
@@ -108,16 +94,14 @@ class RootViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func starSwitchPress(_ sender: Any) {
-        repoList_filtered = repoList.filter { repo in
-            (!self.starSwitch.isOn || repo.showStar)
-        }
-        tableView.reloadData()
+        repoList_filtered = repoDataManager.filterRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList)
         
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         
         if (repoList_filtered.count == 0 && starSwitch.isOn) {
-            let alert = UIAlertController(title: "Warning", message: "No matching starred repository", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true)
+            showAlert(withMessage: "No matching starred repository")
         }
  
     }
@@ -132,10 +116,18 @@ class RootViewController: UIViewController, UITableViewDataSource {
                 button.isSelected = sender.isSelected
                 setButtonBackgroundColor(forButton: button)
             }
+        } else if (!sender.isSelected) {
+            langButtonSelectAll.isSelected = false
+            setButtonBackgroundColor(forButton: langButtonSelectAll)
         }
         
         // manage list for filters selcted
         // TODO!!!
+        repoList_filtered = repoDataManager.filterRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList)
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         
         
     }
@@ -255,5 +247,14 @@ extension RootViewController {
         else {
             button.backgroundColor = UIColor.lightGray
         }
+    }
+    
+    
+    private func showAlert(withMessage message: String) {
+        
+        let alert = UIAlertController(title: "Warning", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true)
+        
     }
 }
