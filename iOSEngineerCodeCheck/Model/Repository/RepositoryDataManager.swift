@@ -115,13 +115,21 @@ struct RepositoryDataManager {
     }
     
     
-    func manageRepoList(starSwitch: UISwitch, langButtons: [UIButton], repoList: [RepositoryModel], dateSortType: K.sortTypeDate, starSortType: K.sortTypeCount) -> [RepositoryModel] {
+    func manageRepoList(starSwitch: UISwitch, langButtons: [UIButton], repoList: [RepositoryModel], sortType: K.sortType) -> [RepositoryModel] {
         
         let repoList_filtered = filterRepoList(starSwitch: starSwitch, langButtons: langButtons, repoList: repoList)
-        let repoList_sorted_date = sortRepoListByUpdateDate(sortType: dateSortType, repoList: repoList_filtered)
-        let repoList_sorted_count = sortRepoListByStarCount(sortType: starSortType, repoList: repoList_sorted_date)
+        var repoList_sorted: [RepositoryModel] = []
         
-        return repoList_sorted_count
+        switch sortType {
+        case .byNewest, .byOldest:
+            repoList_sorted = sortRepoListByUpdateDate(sortType: sortType, repoList: repoList_filtered)
+        case .byAscendingStar, .byDescendingStar:
+            repoList_sorted = sortRepoListByStarCount(sortType: sortType, repoList: repoList_filtered)
+        default:
+            repoList_sorted = repoList_filtered
+        }
+        
+        return repoList_sorted
     }
     
     
@@ -152,7 +160,7 @@ struct RepositoryDataManager {
         return repoList_filtered
     }
     
-    private func sortRepoListByUpdateDate(sortType: K.sortTypeDate, repoList: [RepositoryModel]) -> [RepositoryModel] {
+    private func sortRepoListByUpdateDate(sortType: K.sortType, repoList: [RepositoryModel]) -> [RepositoryModel] {
         var sortedList: [RepositoryModel] = []
         switch sortType {
         case .byNewest:
@@ -167,12 +175,12 @@ struct RepositoryDataManager {
         return sortedList
     }
     
-    private func sortRepoListByStarCount(sortType: K.sortTypeCount, repoList: [RepositoryModel]) -> [RepositoryModel] {
+    private func sortRepoListByStarCount(sortType: K.sortType, repoList: [RepositoryModel]) -> [RepositoryModel] {
         var sortedList: [RepositoryModel] = []
         switch sortType {
-        case .Ascending:
+        case .byAscendingStar:
             sortedList = repoList.sorted(by: { ($0.stargazers_count ?? 0) < ($1.stargazers_count ?? 0) })
-        case .Descending:
+        case .byDescendingStar:
                 sortedList = repoList.sorted(by: { ($0.stargazers_count ?? 0) > ($1.stargazers_count ?? 0) })
         default:
             sortedList = repoList

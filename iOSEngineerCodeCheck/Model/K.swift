@@ -30,15 +30,11 @@ struct K {
         case langTypeScript = "TypeScript"
     }
     
-    enum sortTypeDate: String {
+    enum sortType: String {
         case byNewest = "Newest"
         case byOldest = "Oldest"
-        case noSort = "NoSort"
-    }
-    
-    enum sortTypeCount: String {
-        case Ascending = "Ascending"
-        case Descending = "Descending"
+        case byAscendingStar = "Ascending"
+        case byDescendingStar = "Descending"
         case noSort = "NoSort"
     }
 }

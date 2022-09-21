@@ -412,7 +412,7 @@
                                                             <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="sortByNewestButtonPress:" destination="jN4-Rp-zsk" eventType="touchUpInside" id="9ne-of-hII"/>
+                                                            <action selector="sortButtonPress:" destination="jN4-Rp-zsk" eventType="touchUpInside" id="X8r-hX-FFu"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" preferredBehavioralStyle="pad" translatesAutoresizingMaskIntoConstraints="NO" id="rSj-qb-Yp5">
@@ -429,7 +429,7 @@
                                                             <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="sortByOldestButtonPress:" destination="jN4-Rp-zsk" eventType="touchUpInside" id="XLu-cv-ZHF"/>
+                                                            <action selector="sortButtonPress:" destination="jN4-Rp-zsk" eventType="touchUpInside" id="sld-au-wPh"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -465,7 +465,7 @@
                                                             <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="sortByAscendingStarButtonPress:" destination="jN4-Rp-zsk" eventType="touchUpInside" id="ZFo-T8-6ms"/>
+                                                            <action selector="sortButtonPress:" destination="jN4-Rp-zsk" eventType="touchUpInside" id="0Wq-RW-Na0"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" preferredBehavioralStyle="pad" translatesAutoresizingMaskIntoConstraints="NO" id="hxd-k5-jwL" userLabel="Descending">
@@ -482,7 +482,7 @@
                                                             <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="sortByDescendingStarButtonPress:" destination="jN4-Rp-zsk" eventType="touchUpInside" id="wvi-t2-jB4"/>
+                                                            <action selector="sortButtonPress:" destination="jN4-Rp-zsk" eventType="touchUpInside" id="fqh-1r-toD"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -592,6 +592,10 @@
                                     <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BuU-K8-YZ5">
                                         <rect key="frame" x="0.0" y="15.5" width="29.5" height="28"/>
                                         <color key="tintColor" red="0.99708908799999996" green="0.98848003149999997" blue="0.0054007517169999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="E2r-TD-1E9"/>
+                                            <constraint firstAttribute="height" constant="20" id="ZEY-R6-za8"/>
+                                        </constraints>
                                         <imageReference key="image" image="star.fill" catalog="system" symbolScale="large" renderingMode="template"/>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
                                     </imageView>
