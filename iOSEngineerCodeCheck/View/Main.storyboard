@@ -96,13 +96,13 @@
                                 </prototypes>
                             </tableView>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rF8-tS-UVt">
-                                <rect key="frame" x="114" y="70" width="300" height="500"/>
+                                <rect key="frame" x="114" y="70" width="300" height="560"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="U97-kZ-yz8" userLabel="StarFilterStack">
-                                        <rect key="frame" x="10" y="20" width="168.5" height="66"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="U97-kZ-yz8" userLabel="StarFilterStack">
+                                        <rect key="frame" x="10" y="20" width="232.5" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Star Repository Only" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vs-Lx-n4T">
-                                                <rect key="frame" x="0.0" y="0.0" width="168.5" height="20"/>
+                                                <rect key="frame" x="0.0" y="5.5" width="168.5" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="ajF-dt-1Ah"/>
                                                 </constraints>
@@ -111,7 +111,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aMN-UL-Bu5">
-                                                <rect key="frame" x="119.5" y="35" width="51" height="31"/>
+                                                <rect key="frame" x="183.5" y="0.0" width="51" height="31"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="onTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="thumbTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -122,7 +122,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67h-K3-4q2" userLabel="Divider">
-                                        <rect key="frame" x="10" y="106" width="280" height="8"/>
+                                        <rect key="frame" x="10" y="71" width="280" height="8"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="8" id="ZCK-kX-QcG"/>
@@ -130,7 +130,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7yU-cB-34o" userLabel="LangFilterStack">
-                                        <rect key="frame" x="15" y="134" width="270" height="210"/>
+                                        <rect key="frame" x="15" y="99" width="270" height="210"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="8Cc-V2-Smi">
                                                 <rect key="frame" x="0.0" y="0.0" width="185.5" height="30"/>
@@ -376,15 +376,15 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N4b-99-w86" userLabel="Divider2">
-                                        <rect key="frame" x="10" y="364" width="280" height="8"/>
+                                        <rect key="frame" x="10" y="329" width="280" height="8"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="280" id="0yv-DA-4pv"/>
                                             <constraint firstAttribute="height" constant="8" id="40y-U2-VZq"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="PeB-37-faU" userLabel="SortingFilterStack">
-                                        <rect key="frame" x="10" y="392" width="167.5" height="65"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="PeB-37-faU" userLabel="DateSortingFilterStack">
+                                        <rect key="frame" x="10" y="357" width="167.5" height="65"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort By Update Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v49-HL-Xli">
                                                 <rect key="frame" x="0.0" y="0.0" width="167.5" height="20"/>
@@ -436,12 +436,75 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="nEC-VZ-oI7" userLabel="StarSortingFilterStack">
+                                        <rect key="frame" x="10" y="470" width="190" height="65"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort By Star Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3g-GG-pAD" userLabel="Sort By Star">
+                                                <rect key="frame" x="0.0" y="0.0" width="153.5" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="RVs-n5-r8I"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="15"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ny9-E4-ewa">
+                                                <rect key="frame" x="0.0" y="35" width="190" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" preferredBehavioralStyle="pad" translatesAutoresizingMaskIntoConstraints="NO" id="LBh-At-qxi" userLabel="Ascending">
+                                                        <rect key="frame" x="0.0" y="0.0" width="87.5" height="30"/>
+                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="dJX-Xk-Sjg"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="filled" title="Ascending" cornerStyle="large">
+                                                            <backgroundConfiguration key="background"/>
+                                                            <fontDescription key="titleFontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="10"/>
+                                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="sortByAscendingStarButtonPress:" destination="jN4-Rp-zsk" eventType="touchUpInside" id="ZFo-T8-6ms"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" preferredBehavioralStyle="pad" translatesAutoresizingMaskIntoConstraints="NO" id="hxd-k5-jwL" userLabel="Descending">
+                                                        <rect key="frame" x="102.5" y="0.0" width="87.5" height="30"/>
+                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="ERg-1n-QYP"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="filled" title="Descending" cornerStyle="large">
+                                                            <backgroundConfiguration key="background"/>
+                                                            <fontDescription key="titleFontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="10"/>
+                                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="sortByDescendingStarButtonPress:" destination="jN4-Rp-zsk" eventType="touchUpInside" id="wvi-t2-jB4"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HFu-1X-bdC" userLabel="Divider2">
+                                        <rect key="frame" x="10" y="442" width="280" height="8"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" id="WzE-Fe-FPu"/>
+                                            <constraint firstAttribute="height" constant="8" id="kYY-3c-jeq"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="HFu-1X-bdC" firstAttribute="centerX" secondItem="rF8-tS-UVt" secondAttribute="centerX" id="39C-Wc-HXS"/>
+                                    <constraint firstItem="HFu-1X-bdC" firstAttribute="top" secondItem="PeB-37-faU" secondAttribute="bottom" constant="20" id="AW4-RO-UPx"/>
                                     <constraint firstItem="7yU-cB-34o" firstAttribute="leading" secondItem="rF8-tS-UVt" secondAttribute="leading" constant="15" id="HR5-fs-2nN"/>
-                                    <constraint firstAttribute="height" constant="500" id="JbE-gK-bNa"/>
+                                    <constraint firstAttribute="height" constant="560" id="JbE-gK-bNa"/>
                                     <constraint firstItem="N4b-99-w86" firstAttribute="centerX" secondItem="rF8-tS-UVt" secondAttribute="centerX" id="KBg-K1-fCJ"/>
                                     <constraint firstItem="PeB-37-faU" firstAttribute="top" secondItem="N4b-99-w86" secondAttribute="bottom" constant="20" id="PZ0-hC-JZF"/>
                                     <constraint firstItem="67h-K3-4q2" firstAttribute="centerX" secondItem="rF8-tS-UVt" secondAttribute="centerX" id="Uhr-8i-VdE"/>
@@ -451,6 +514,9 @@
                                     <constraint firstAttribute="trailing" secondItem="7yU-cB-34o" secondAttribute="trailing" constant="15" id="hXB-Yk-JBB"/>
                                     <constraint firstItem="7yU-cB-34o" firstAttribute="top" secondItem="67h-K3-4q2" secondAttribute="bottom" constant="20" id="n8e-1X-BLF"/>
                                     <constraint firstItem="U97-kZ-yz8" firstAttribute="top" secondItem="rF8-tS-UVt" secondAttribute="top" constant="20" id="nYz-cs-b0N"/>
+                                    <constraint firstItem="nEC-VZ-oI7" firstAttribute="leading" secondItem="rF8-tS-UVt" secondAttribute="leading" constant="10" id="nid-e5-QA3"/>
+                                    <constraint firstItem="nEC-VZ-oI7" firstAttribute="top" secondItem="HFu-1X-bdC" secondAttribute="bottom" constant="20" id="rOi-BN-DVs"/>
+                                    <constraint firstItem="nEC-VZ-oI7" firstAttribute="top" secondItem="HFu-1X-bdC" secondAttribute="bottom" constant="20" id="vau-BZ-uaJ"/>
                                     <constraint firstItem="U97-kZ-yz8" firstAttribute="leading" secondItem="rF8-tS-UVt" secondAttribute="leading" constant="10" id="vsk-fc-yRW"/>
                                     <constraint firstItem="PeB-37-faU" firstAttribute="leading" secondItem="rF8-tS-UVt" secondAttribute="leading" constant="10" id="wjj-6G-7fF"/>
                                 </constraints>
@@ -493,8 +559,10 @@
                         <outlet property="langButtonScala" destination="Tf3-Io-5tM" id="l5x-Nu-eS9"/>
                         <outlet property="langButtonSelectAll" destination="kb5-yx-myl" id="ZWX-9Z-z3Z"/>
                         <outlet property="langButtonTypeScript" destination="Shh-TR-dSk" id="ggT-rT-xBz"/>
-                        <outlet property="sortByNewestButton" destination="XlL-7w-fVJ" id="a7D-id-L5F"/>
-                        <outlet property="sortByOldestButton" destination="rSj-qb-Yp5" id="M1q-VZ-O1l"/>
+                        <outlet property="sortAscendingButton" destination="LBh-At-qxi" id="DYh-xH-XyQ"/>
+                        <outlet property="sortDescendingButton" destination="hxd-k5-jwL" id="FWD-te-EpG"/>
+                        <outlet property="sortNewestButton" destination="XlL-7w-fVJ" id="a7D-id-L5F"/>
+                        <outlet property="sortOldestButton" destination="rSj-qb-Yp5" id="M1q-VZ-O1l"/>
                         <outlet property="starSwitch" destination="aMN-UL-Bu5" id="m9d-ca-p0c"/>
                         <outlet property="tableView" destination="0ag-CT-HVZ" id="f43-6a-coC"/>
                         <outlet property="textField" destination="ILU-BY-fLC" id="Wgc-I0-S2f"/>

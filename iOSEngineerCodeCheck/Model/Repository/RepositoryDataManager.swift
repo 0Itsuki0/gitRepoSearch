@@ -115,7 +115,7 @@ struct RepositoryDataManager {
     }
     
     
-    func manageRepoList(starSwitch: UISwitch, langButtons: [UIButton], repoList: [RepositoryModel], sortType: K.sortType) -> [RepositoryModel] {
+    func manageRepoList(starSwitch: UISwitch, langButtons: [UIButton], repoList: [RepositoryModel], sortType: K.sortTypeDate) -> [RepositoryModel] {
         
         let repoList_filtered = filterRepoList(starSwitch: starSwitch, langButtons: langButtons, repoList: repoList)
         let repoList_sorted = sortRepoList(sortType: sortType, repoList: repoList_filtered)
@@ -151,7 +151,7 @@ struct RepositoryDataManager {
         return repoList_filtered
     }
     
-    private func sortRepoList(sortType: K.sortType, repoList: [RepositoryModel]) -> [RepositoryModel] {
+    private func sortRepoList(sortType: K.sortTypeDate, repoList: [RepositoryModel]) -> [RepositoryModel] {
         var sortedList: [RepositoryModel] = []
         switch sortType {
         case .byNewest:

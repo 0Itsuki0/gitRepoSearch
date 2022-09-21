@@ -32,8 +32,12 @@ class RootViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var langButtonTypeScript: UIButton!
     @IBOutlet weak var langButtonOther: UIButton!
     
-    @IBOutlet weak var sortByNewestButton: UIButton!
-    @IBOutlet weak var sortByOldestButton: UIButton!
+    @IBOutlet weak var sortNewestButton: UIButton!
+    @IBOutlet weak var sortOldestButton: UIButton!
+    
+    @IBOutlet weak var sortAscendingButton: UIButton!
+    @IBOutlet weak var sortDescendingButton: UIButton!
+    
     
     var langButtonList: [UIButton] = []
     
@@ -73,14 +77,17 @@ class RootViewController: UIViewController, UITableViewDataSource {
             button.accessibilityIdentifier = button.titleLabel?.text
         }
         
-        addBorderRoundCorner(toView: sortByNewestButton as UIView, borderWidth: 1, cornerRadius: sortByNewestButton.layer.bounds.height/2)
-        setButtonBackgroundColor(forButton: sortByNewestButton)
-        sortByNewestButton.accessibilityIdentifier = "sortByNewestButton"
+        addBorderRoundCorner(toView: sortNewestButton as UIView, borderWidth: 1, cornerRadius: sortNewestButton.layer.bounds.height/2)
+        setButtonBackgroundColor(forButton: sortNewestButton)
         
-        addBorderRoundCorner(toView: sortByOldestButton as UIView, borderWidth: 1, cornerRadius: sortByOldestButton.layer.bounds.height/2)
-        setButtonBackgroundColor(forButton: sortByOldestButton)
-        sortByOldestButton.accessibilityIdentifier = "sortByOldestButton"
+        addBorderRoundCorner(toView: sortOldestButton as UIView, borderWidth: 1, cornerRadius: sortOldestButton.layer.bounds.height/2)
+        setButtonBackgroundColor(forButton: sortOldestButton)
         
+        addBorderRoundCorner(toView: sortAscendingButton as UIView, borderWidth: 1, cornerRadius: sortAscendingButton.layer.bounds.height/2)
+        setButtonBackgroundColor(forButton: sortAscendingButton)
+        
+        addBorderRoundCorner(toView: sortDescendingButton as UIView, borderWidth: 1, cornerRadius: sortDescendingButton.layer.bounds.height/2)
+        setButtonBackgroundColor(forButton: sortDescendingButton)
 
         
         tableView.accessibilityIdentifier = "RepoListTable"
@@ -150,8 +157,8 @@ class RootViewController: UIViewController, UITableViewDataSource {
     @IBAction func sortByNewestButtonPress(_ sender: UIButton) {
         setButtonBackgroundColor(forButton: sender)
         if (sender.isSelected) {
-            sortByOldestButton.isSelected = false
-            setButtonBackgroundColor(forButton: sortByOldestButton)
+            sortOldestButton.isSelected = false
+            setButtonBackgroundColor(forButton: sortOldestButton)
         }
         repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, sortType: getSortType())
         DispatchQueue.main.async {
@@ -163,14 +170,26 @@ class RootViewController: UIViewController, UITableViewDataSource {
     @IBAction func sortByOldestButtonPress(_ sender: UIButton) {
         setButtonBackgroundColor(forButton: sender)
         if (sender.isSelected) {
-            sortByNewestButton.isSelected = false
-            setButtonBackgroundColor(forButton: sortByNewestButton)
+            sortNewestButton.isSelected = false
+            setButtonBackgroundColor(forButton: sortNewestButton)
         }
         repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, sortType: getSortType())
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
+    
+    
+    @IBAction func sortByAscendingStarButtonPress(_ sender: UIButton) {
+    }
+    
+    
+    @IBAction func sortByDescendingStarButtonPress(_ sender: UIButton) {
+    }
+    
+    
+    
+    
     
     @IBAction func tapGestureRecognized(_ sender: Any) {
         textField.endEditing(true)
@@ -283,14 +302,14 @@ extension RootViewController {
         }
     }
     
-    private func getSortType() -> K.sortType {
+    private func getSortType() -> K.sortTypeDate {
         
-        if sortByNewestButton.isSelected {
-            return K.sortType.byNewest
-        } else if sortByOldestButton.isSelected {
-            return K.sortType.byOldest
+        if sortNewestButton.isSelected {
+            return K.sortTypeDate.byNewest
+        } else if sortOldestButton.isSelected {
+            return K.sortTypeDate.byOldest
         } else {
-            return K.sortType.noSort
+            return K.sortTypeDate.noSort
         }
     }
     

@@ -72,7 +72,7 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
         rootVC.loadViewIfNeeded()
         rootVC.starSwitch.isOn = true
         rootVC.langButtonC.isSelected = false
-        rootVC.sortByNewestButton.isSelected = true
+        rootVC.sortNewestButton.isSelected = true
         
         let filteredList = sut_repositoryDataManager.manageRepoList(starSwitch: rootVC.starSwitch, langButtons: rootVC.langButtonList, repoList: repoDataList ?? [], sortType: .byNewest)
           
