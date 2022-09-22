@@ -40,8 +40,8 @@ class RootViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var sortAscendingButton: UIButton!
     @IBOutlet weak var sortDescendingButton: UIButton!
     
-    var langButtonList: [UIButton] = []
-    var sortingButtonList: [UIButton] = []
+    private var langButtonList: [UIButton] = []
+    private var sortingButtonList: [UIButton] = []
     
     private var repoList_original: [RepositoryModel] = []
     private var repoList_filteredSorted: [RepositoryModel] = []

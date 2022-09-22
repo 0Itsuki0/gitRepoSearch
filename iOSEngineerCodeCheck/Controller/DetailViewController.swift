@@ -26,7 +26,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var gitHubOpenButton: UIButton!
     
     var repo: RepositoryModel!
-    var repoDataManager = RepositoryDataManager()
+    private var repoDataManager = RepositoryDataManager()
 
 
     override func viewDidLoad() {

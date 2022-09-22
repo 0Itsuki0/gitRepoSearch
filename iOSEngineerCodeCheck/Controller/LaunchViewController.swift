@@ -13,7 +13,7 @@ class LaunchViewController: UIViewController {
     
     @IBOutlet weak var LuanchImageView: UIImageView!
     
-    var animationView: UIImageView!
+    private var animationView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
