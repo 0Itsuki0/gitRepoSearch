@@ -13,7 +13,7 @@
         <!--RootViewController-->
         <scene sceneID="gjT-8X-WI2">
             <objects>
-                <viewController storyboardIdentifier="RootViewController" title="RootViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jN4-Rp-zsk" customClass="RootViewController" customModule="Git_Repo_Search" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RootViewController" title="RootViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jN4-Rp-zsk" customClass="RootViewController" customModule="iOSEngineerCodeCheck" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Ty-6b-EDR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="804"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,7 +85,7 @@
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReusableCell" rowHeight="100" id="Y9U-qC-uRY" customClass="TableViewCell" customModule="Git_Repo_Search" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReusableCell" rowHeight="100" id="Y9U-qC-uRY" customClass="TableViewCell" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y9U-qC-uRY" id="mCD-QE-LDr">
@@ -582,26 +582,26 @@
         <!--Detail View Controller-->
         <scene sceneID="JOC-74-7VT">
             <objects>
-                <viewController id="AHY-RL-7mG" customClass="DetailViewController" customModule="Git_Repo_Search" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AHY-RL-7mG" customClass="DetailViewController" customModule="iOSEngineerCodeCheck" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4gp-25-lRZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="804"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZAJ-eI-lK0">
-                                <rect key="frame" x="164" y="424" width="86" height="60"/>
+                                <rect key="frame" x="121" y="424" width="172" height="60"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BuU-K8-YZ5">
-                                        <rect key="frame" x="0.0" y="15.5" width="20" height="28"/>
+                                        <rect key="frame" x="0.0" y="5.5" width="40" height="48"/>
                                         <color key="tintColor" red="0.99708908799999996" green="0.98848003149999997" blue="0.0054007517169999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="E2r-TD-1E9"/>
-                                            <constraint firstAttribute="height" constant="20" id="ZEY-R6-za8"/>
+                                            <constraint firstAttribute="width" constant="40" id="E2r-TD-1E9"/>
+                                            <constraint firstAttribute="height" constant="40" id="ZEY-R6-za8"/>
                                         </constraints>
                                         <imageReference key="image" image="star.fill" catalog="system" symbolScale="large" renderingMode="template"/>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4q1-pG-WSB">
-                                        <rect key="frame" x="35" y="1.5" width="51" height="57"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="4q1-pG-WSB">
+                                        <rect key="frame" x="55" y="1.5" width="117" height="57"/>
                                         <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="40"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -755,7 +755,7 @@
         <!--Launch View Controller-->
         <scene sceneID="oa3-NW-25y">
             <objects>
-                <viewController id="0ll-ie-y4R" customClass="LaunchViewController" customModule="Git_Repo_Search" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0ll-ie-y4R" customClass="LaunchViewController" customModule="iOSEngineerCodeCheck" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IYq-4T-13y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -8,7 +8,6 @@
 
 import XCTest
 @testable import iOSEngineerCodeCheck
-// @testable import Git_Repo_Search
 
 
 class iOSEngineerCodeCheckUITests: XCTestCase {
@@ -37,6 +36,11 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     func test_UISearchBar_typing() {
         // let searchBarElement = app.tables.searchFields["GitHubのリポジトリを検索"]
         let textFieldElement = app.textFields["textField"]
+        let exists = NSPredicate(format: "exists == 1")
+        let expectation = expectation(for: exists, evaluatedWith: textFieldElement)
+        waitForExpectations(timeout: 10, handler: nil)
+        
+        
         XCTAssertTrue(textFieldElement.exists, "search bar does not exists")
         textFieldElement.tap()
         textFieldElement.typeText("test")
@@ -46,6 +50,9 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     func test_navigation() {
         
         let textFieldElement = app.textFields["textField"]
+        let exists = NSPredicate(format: "exists == 1")
+        let expectation0 = expectation(for: exists, evaluatedWith: textFieldElement)
+        waitForExpectations(timeout: 10, handler: nil)
         XCTAssertTrue(textFieldElement.exists, "search bar does not exists")
         
         let repolisttableTable = app.tables["RepoListTable"]
@@ -59,7 +66,6 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         
         // wait for data to load
         let tableCell_0 = repolisttableTable.cells["0"]
-        let exists = NSPredicate(format: "exists == 1")
         let expectation = expectation(for: exists, evaluatedWith: tableCell_0)
         waitForExpectations(timeout: 10, handler: nil)
         
@@ -81,6 +87,9 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     func test_tableViewScroll() {
         
         let textFieldElement = app.textFields["textField"]
+        let exists = NSPredicate(format: "exists == 1")
+        let expectation0 = expectation(for: exists, evaluatedWith: textFieldElement)
+        waitForExpectations(timeout: 10, handler: nil)
         let repolisttableTable = app.tables["RepoListTable"]
         
         textFieldElement.tap()
@@ -90,7 +99,6 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         
         // wait for data to load
         let tableCell_0 = repolisttableTable.cells["0"]
-        let exists = NSPredicate(format: "exists == 1")
         let expectation = expectation(for: exists, evaluatedWith: tableCell_0)
         waitForExpectations(timeout: 10, handler: nil)
 
@@ -118,6 +126,9 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     func testStarFilter() {
         
         let textFieldElement = app.textFields["textField"]
+        let exists = NSPredicate(format: "exists == 1")
+        let expectation0 = expectation(for: exists, evaluatedWith: textFieldElement)
+        waitForExpectations(timeout: 10, handler: nil)
         let repolisttableTable = app.tables["RepoListTable"]
         
         textFieldElement.tap()
@@ -128,7 +139,6 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         
         // wait for data to load
         let tableCell_0 = repolisttableTable.cells["0"]
-        let exists = NSPredicate(format: "exists == 1")
         let expectation = expectation(for: exists, evaluatedWith: tableCell_0)
         waitForExpectations(timeout: 10, handler: nil)
 
@@ -152,6 +162,9 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     func testLanguageFilter() {
         
         let textFieldElement = app.textFields["textField"]
+        let exists = NSPredicate(format: "exists == 1")
+        let expectation0 = expectation(for: exists, evaluatedWith: textFieldElement)
+        waitForExpectations(timeout: 10, handler: nil)
         let repolisttableTable = app.tables["RepoListTable"]
         
         textFieldElement.tap()
@@ -162,7 +175,6 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         
         // wait for data to load
         let tableCell_0 = repolisttableTable.cells["0"]
-        let exists = NSPredicate(format: "exists == 1")
         let expectation = expectation(for: exists, evaluatedWith: tableCell_0)
         waitForExpectations(timeout: 10, handler: nil)
 
@@ -197,6 +209,9 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     func test_detailViewLabelExist() {
         
         let textFieldElement = app.textFields["textField"]
+        let exists = NSPredicate(format: "exists == 1")
+        let expectation0 = expectation(for: exists, evaluatedWith: textFieldElement)
+        waitForExpectations(timeout: 10, handler: nil)
         let repolisttableTable = app.tables["RepoListTable"]
         
         textFieldElement.tap()
@@ -206,7 +221,6 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         
         // wait for data to load
         let tableCell_0 = repolisttableTable.cells["0"]
-        let exists = NSPredicate(format: "exists == 1")
         let expectation = expectation(for: exists, evaluatedWith: tableCell_0)
         waitForExpectations(timeout: 10, handler: nil)
         
@@ -245,7 +259,10 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     func test_alertView() {
         
         let textFieldElement = app.textFields["textField"]
-
+        let exists = NSPredicate(format: "exists == 1")
+        let expectation0 = expectation(for: exists, evaluatedWith: textFieldElement)
+        waitForExpectations(timeout: 10, handler: nil)
+        
         textFieldElement.tap()
         textFieldElement.typeText("t. t")
         
@@ -254,7 +271,6 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         // wait for data to load
       
         let alertView = app.alerts.element(boundBy: 0)
-        let exists = NSPredicate(format: "exists == 1")
         let expectation = expectation(for: exists, evaluatedWith: alertView)
         waitForExpectations(timeout: 10, handler: nil)
         
