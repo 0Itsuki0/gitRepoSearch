@@ -15,6 +15,8 @@ class RootViewController: UIViewController, UITableViewDataSource {
    
     @IBOutlet weak var filterView: UIView!
     
+    @IBOutlet weak var filterViewButton: UIButton!
+    
     @IBOutlet weak var starSwitch: UISwitch!
     
     @IBOutlet weak var langButtonSelectAll: UIButton!
@@ -248,10 +250,8 @@ extension RootViewController: RepositoryDataDelegate {
 
     func carryError(_ repositoryDataManager: RepositoryDataManager, didFailWithError error: String) {
         // create the alert
-        let alert = UIAlertController(title: "Warning", message: error, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         DispatchQueue.main.async {
-            self.present(alert, animated: true)
+            self.showAlert(withMessage: error)
         }
     }
 }

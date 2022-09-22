@@ -73,7 +73,7 @@
 		989CB6FE28DBF01A008560ED /* launchScreen4x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = launchScreen4x.gif; sourceTree = "<group>"; };
 		98D3FC9E28D6F6270060D2AD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = iOSEngineerCodeCheck/Model/TableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		98D3FC9F28D6F6270060D2AD /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TableViewCell.xib; path = iOSEngineerCodeCheck/Model/TableViewCell.xib; sourceTree = SOURCE_ROOT; };
-		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFD945DB244DC5E80012785A /* Git Repo Search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Git Repo Search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFD945E0244DC5E80012785A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BFD945E7244DC5EB0012785A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 		BFD945DC244DC5E80012785A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */,
+				BFD945DB244DC5E80012785A /* Git Repo Search.app */,
 				BFD945F1244DC5EB0012785A /* iOSEngineerCodeCheckTests.xctest */,
 				BFD945FC244DC5EB0012785A /* iOSEngineerCodeCheckUITests.xctest */,
 				9893AB5628D59B5A00CD9D1B /* iOSEngineerCodeCheckSlowTests.xctest */,
@@ -271,7 +271,7 @@
 				989CB6E928DBDC39008560ED /* SwiftyGif */,
 			);
 			productName = iOSEngineerCodeCheck;
-			productReference = BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */;
+			productReference = BFD945DB244DC5E80012785A /* Git Repo Search.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BFD945F0244DC5EB0012785A /* iOSEngineerCodeCheckTests */ = {
@@ -562,6 +562,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "Git Repo Search";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -616,6 +617,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "Git Repo Search";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -635,7 +637,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.yumemi.iOSEngineerCodeCheck;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Git Repo Search";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -653,7 +655,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.yumemi.iOSEngineerCodeCheck;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Git Repo Search";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
