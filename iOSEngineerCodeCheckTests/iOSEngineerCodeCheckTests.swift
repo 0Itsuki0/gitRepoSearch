@@ -8,7 +8,6 @@
 
 import XCTest
 @testable import iOSEngineerCodeCheck
-// @testable import Git_Repo_Search
 
 class iOSEngineerCodeCheckTests: XCTestCase {
     var sut_repositoryDataManager: RepositoryDataManager!
