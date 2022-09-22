@@ -19,6 +19,7 @@ class LaunchViewController: UIViewController {
         super.viewDidLoad()
         
         do {
+            // try load gif file
             let gif = try UIImage(gifName: "launchScreen4x.gif")
             animationView = UIImageView(gifImage: gif, loopCount: 1)
             animationView.frame = LuanchImageView.bounds
@@ -34,29 +35,22 @@ class LaunchViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // play gif if availabe
         if animationView != nil {
             animationView.startAnimatingGif()
         } else {
             performSegue(withIdentifier: "LaunchToRoot", sender: self)
         }
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
 
 extension LaunchViewController: SwiftyGifDelegate {
     
+    // move to the main search after playing gif
     func gifDidStop(sender: UIImageView) {
         animationView.isHidden = true
         performSegue(withIdentifier: "LaunchToRoot", sender: self)

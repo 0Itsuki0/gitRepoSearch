@@ -11,8 +11,14 @@ import UIKit
 
 
 protocol RepositoryDataDelegate {
+    
+    // carry repository list fetched
     func carryRepoData(_ repositoryDataManager: RepositoryDataManager, didFetchRepoData repoData: [RepositoryModel])
+    
+    // carry image data fetched
     func carryImgData(_ repositoryDataManager: RepositoryDataManager, didFetchImageData imgData: Data)
+    
+    //carry any error from API call
     func carryError(_ repositoryDataManager: RepositoryDataManager, didFailWithError error: String)
 }
 

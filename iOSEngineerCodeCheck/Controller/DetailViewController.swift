@@ -25,11 +25,10 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var gitHubOpenButton: UIButton!
     
-    
     var repo: RepositoryModel!
     var repoDataManager = RepositoryDataManager()
 
-        
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -74,13 +73,14 @@ class DetailViewController: UIViewController {
         repoDataManager.openRepository(withURL: repo.html_url)
     }
     
-    
 }
+
 
 
 // MARK: - RepositoryDataDelegate functions
 
 extension DetailViewController: RepositoryDataDelegate {
+    
     func carryImgData(_ repositoryDataManager: RepositoryDataManager, didFetchImageData imgData: Data) {
         DispatchQueue.main.async {
             let img = UIImage(data: imgData) ?? UIImage(systemName: "face.smiling")

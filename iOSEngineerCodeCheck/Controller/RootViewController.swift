@@ -56,12 +56,13 @@ class RootViewController: UIViewController, UITableViewDataSource {
         langButtonList = [langButtonC, langButtonCPlusPlus, langButtonCSharp, langButtonGo, langButtonJava, langButtonJavaScript, langButtonPHP, langButtonRuby, langButtonPython, langButtonScala, langButtonTypeScript, langButtonOther]
         sortingButtonList = [sortNewestButton, sortOldestButton, sortAscendingButton, sortDescendingButton]
         
-        // assigning self as delegates
+        // assigning delegates
         textField.delegate = self
         self.tableView.dataSource = self
         self.tableView.delegate = self
         repoDataManager.delegate = self
         
+        // modify appearance
         addBorderRoundCorner(toView: filterView as UIView, borderWidth: 2, cornerRadius: 10)
         addBorderRoundCorner(toView: starSwitch as UIView, borderWidth: 1, cornerRadius: starSwitch.layer.bounds.height/2)
         
@@ -97,8 +98,8 @@ class RootViewController: UIViewController, UITableViewDataSource {
 
     }
     
-    
-    @IBAction func SearchButtonClick(_ sender: Any) {
+    // search button press
+    @IBAction func SearchButtonPress(_ sender: Any) {
         
         textField.endEditing(true)
         
@@ -109,10 +110,12 @@ class RootViewController: UIViewController, UITableViewDataSource {
         }
     }
     
+    // filter and sorting options
     @IBAction func FilterOptionButtonClick(_ sender: Any) {
         filterView.isHidden = !filterView.isHidden
     }
     
+    // show/hide unstarred repo
     @IBAction func starSwitchPress(_ sender: Any) {
         
         repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, sortType: getSortType())
@@ -127,7 +130,7 @@ class RootViewController: UIViewController, UITableViewDataSource {
  
     }
     
-    
+    // filter list by language selected
     @IBAction func LangFilterPress(_ sender: UIButton) {
         
         setButtonBackgroundColor(forButton: sender)
@@ -142,7 +145,6 @@ class RootViewController: UIViewController, UITableViewDataSource {
             setButtonBackgroundColor(forButton: langButtonSelectAll)
         }
         
-        // manage list for filters selcted
         repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, sortType: getSortType())
         
         DispatchQueue.main.async {
@@ -150,6 +152,7 @@ class RootViewController: UIViewController, UITableViewDataSource {
         }
     }
     
+    // sort list by selected option
     @IBAction func sortButtonPress(_ sender: UIButton) {
         setButtonBackgroundColor(forButton: sender)
         
@@ -162,10 +165,9 @@ class RootViewController: UIViewController, UITableViewDataSource {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-        
     }
 
-    
+    // hide keyboard
     @IBAction func tapGestureRecognized(_ sender: Any) {
         textField.endEditing(true)
     }
@@ -189,14 +191,17 @@ extension RootViewController: UITableViewDelegate {
         return repoList_filteredSorted.count
     }
     
+    // create tableview cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! TableViewCell
         let rp = repoList_filteredSorted[indexPath.row]
+        
         cell.repoTitleLabel.text = rp.full_name ?? ""
         cell.repoLanguageLabel.text = "Language: " + (rp.language ?? "(Unspecified)")
         cell.repoUpdateDateLabel.text = "Latest Update: " + repoDataManager.formatDateTime(dateTimeString: rp.updated_at ?? "")
         cell.starImage.isHidden = !rp.showStar
         cell.starCount.text = "\(rp.stargazers_count ?? 0) stars"
+        
         cell.tag = indexPath.row
         cell.accessibilityIdentifier = String(indexPath.row)
         return cell
@@ -219,6 +224,7 @@ extension RootViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.endEditing(true)
+        
         if let word = textField.text {
             print(word)
             repoDataManager.fetchRepoData(word)
@@ -233,10 +239,14 @@ extension RootViewController: UITextFieldDelegate {
 // MARK: - RepositoryDataDelegate functions
 
 extension RootViewController: RepositoryDataDelegate {
+    
+    // handle data fetched from API Call
     func carryRepoData(_ repositoryDataManager: RepositoryDataManager, didFetchRepoData repoData: [RepositoryModel]) {
+        
         DispatchQueue.main.async { [self] in
             repoList_original = repoData
             repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, sortType: getSortType())
+            
             tableView.reloadData()
             
             if (repoList_original.count == 0) {
@@ -248,8 +258,8 @@ extension RootViewController: RepositoryDataDelegate {
         }
     }
 
+    // handle error from API Call
     func carryError(_ repositoryDataManager: RepositoryDataManager, didFailWithError error: String) {
-        // create the alert
         DispatchQueue.main.async {
             self.showAlert(withMessage: error)
         }
@@ -260,13 +270,17 @@ extension RootViewController: RepositoryDataDelegate {
 
 extension RootViewController {
     
+    // modify vieww: round corner and add border
     private func addBorderRoundCorner(toView view: UIView, borderWidth: CGFloat, cornerRadius: CGFloat) {
+        
         view.layer.cornerRadius = cornerRadius
         view.layer.masksToBounds = true
         view.layer.borderWidth = borderWidth
         view.layer.borderColor = UIColor.white.cgColor
+        
     }
     
+    // function for toggle appearance of buttons based on the state
     private func setButtonBackgroundColor(forButton button: UIButton) {
         if button.isSelected {
             button.backgroundColor = UIColor.white
@@ -276,6 +290,7 @@ extension RootViewController {
         }
     }
     
+    // get current sort type
     private func getSortType() -> K.sortType {
         
         if sortNewestButton.isSelected {
@@ -291,8 +306,9 @@ extension RootViewController {
         }
     }
     
-    
+    // only one type of sort is allowed
     private func deselectSortButton(sortOnButton: UIButton) {
+        
         for button in sortingButtonList {
             if button != sortOnButton {
                 button.isSelected = false
@@ -301,7 +317,7 @@ extension RootViewController {
         }
     }
     
-    
+    // create and show alert for given message
     private func showAlert(withMessage message: String) {
         
         let alert = UIAlertController(title: "Warning", message: message, preferredStyle: UIAlertController.Style.alert)

@@ -11,9 +11,9 @@ import UIKit
 
 struct RepositoryDataManager {
     
-    let repoSearchBaseURL: String = "https://api.github.com/search/repositories?q="
     var delegate: RepositoryDataDelegate?
     
+    // fetch repository list for user input
     func fetchRepoData(_ userInput: String) {
         
         if userInput == "" {
@@ -22,7 +22,7 @@ struct RepositoryDataManager {
             return
         }
         
-        let urlString =  repoSearchBaseURL + userInput
+        let urlString =  K.repoSearchBaseURL + userInput
         
         guard let url = URL(string: urlString) else {
             print("Bad URL: \(urlString)")
@@ -57,7 +57,7 @@ struct RepositoryDataManager {
 
     }
     
-    
+    // decode repository list json data using custom model
     private func decodeRepoData(_ data: Data) -> [RepositoryModel]?{
         let decoder = JSONDecoder()
         do {
@@ -72,7 +72,7 @@ struct RepositoryDataManager {
         }
     }
     
-    
+    // fetch avatar image of repository owner
     func fetchAvatarImage(from avatar_url: String?){
                 
         guard let avatar_url = avatar_url, let url = URL(string: avatar_url) else {
@@ -106,6 +106,7 @@ struct RepositoryDataManager {
         }
     }
     
+    // open repository on github
     func openRepository(withURL url: String?) {
         guard let repoUrl_string = url, let url = URL(string: repoUrl_string) else {
             self.delegate?.carryError(self, didFailWithError: "Failed to open the repository")
@@ -114,7 +115,7 @@ struct RepositoryDataManager {
         UIApplication.shared.open(url)
     }
     
-    
+    // filter and sort repository list
     func manageRepoList(starSwitch: UISwitch, langButtons: [UIButton], repoList: [RepositoryModel], sortType: K.sortType) -> [RepositoryModel] {
         
         let repoList_filtered = filterRepoList(starSwitch: starSwitch, langButtons: langButtons, repoList: repoList)
@@ -132,7 +133,7 @@ struct RepositoryDataManager {
         return repoList_sorted
     }
     
-    
+    // apply filter to list
     private func filterRepoList(starSwitch: UISwitch, langButtons: [UIButton], repoList: [RepositoryModel]) -> [RepositoryModel] {
         
         var repoList_filtered = repoList
@@ -160,8 +161,11 @@ struct RepositoryDataManager {
         return repoList_filtered
     }
     
+    // apply sort to list by updated date
     private func sortRepoListByUpdateDate(sortType: K.sortType, repoList: [RepositoryModel]) -> [RepositoryModel] {
+        
         var sortedList: [RepositoryModel] = []
+        
         switch sortType {
         case .byNewest:
             sortedList = repoList.sorted(by: {
@@ -172,11 +176,15 @@ struct RepositoryDataManager {
         default:
             sortedList = repoList
         }
+        
         return sortedList
     }
     
+    // apply sort to list by star count
     private func sortRepoListByStarCount(sortType: K.sortType, repoList: [RepositoryModel]) -> [RepositoryModel] {
+        
         var sortedList: [RepositoryModel] = []
+        
         switch sortType {
         case .byAscendingStar:
             sortedList = repoList.sorted(by: { ($0.stargazers_count ?? 0) < ($1.stargazers_count ?? 0) })
@@ -185,6 +193,7 @@ struct RepositoryDataManager {
         default:
             sortedList = repoList
         }
+        
         return sortedList
     }
     
