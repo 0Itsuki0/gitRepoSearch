@@ -82,7 +82,10 @@ class DetailViewController: UIViewController {
 extension DetailViewController: RepositoryDataDelegate {
     
     func carryImgData(_ repositoryDataManager: RepositoryDataManager, didFetchImageData imgData: Data) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
             let img = UIImage(data: imgData) ?? UIImage(systemName: "face.smiling")
             self.ImgView.image = img
         }
@@ -93,7 +96,10 @@ extension DetailViewController: RepositoryDataDelegate {
         let alert = UIAlertController(title: "Warning", message: error, preferredStyle: UIAlertController.Style.alert)
         // add an action (button)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
             self.ImgView.image = UIImage(systemName: "face.smiling")
             self.present(alert, animated: true)
         }

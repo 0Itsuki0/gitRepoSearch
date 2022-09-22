@@ -12,6 +12,7 @@ import XCTest
 
 class iOSEngineerCodeCheckUITests: XCTestCase {
     var app: XCUIApplication!
+
     
     
     override func setUpWithError() throws {
@@ -28,6 +29,7 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
     
     override func tearDownWithError() throws {
         app.terminate()
+        app = nil
         try super.tearDownWithError()
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
@@ -37,7 +39,7 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         // let searchBarElement = app.tables.searchFields["GitHubのリポジトリを検索"]
         let textFieldElement = app.textFields["textField"]
         let exists = NSPredicate(format: "exists == 1")
-        let expectation = expectation(for: exists, evaluatedWith: textFieldElement)
+        _ = expectation(for: exists, evaluatedWith: textFieldElement)
         waitForExpectations(timeout: 10, handler: nil)
         
         
@@ -51,7 +53,7 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         
         let textFieldElement = app.textFields["textField"]
         let exists = NSPredicate(format: "exists == 1")
-        let expectation0 = expectation(for: exists, evaluatedWith: textFieldElement)
+        _ = expectation(for: exists, evaluatedWith: textFieldElement)
         waitForExpectations(timeout: 10, handler: nil)
         XCTAssertTrue(textFieldElement.exists, "search bar does not exists")
         
@@ -88,7 +90,7 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         
         let textFieldElement = app.textFields["textField"]
         let exists = NSPredicate(format: "exists == 1")
-        let expectation0 = expectation(for: exists, evaluatedWith: textFieldElement)
+        _ = expectation(for: exists, evaluatedWith: textFieldElement)
         waitForExpectations(timeout: 10, handler: nil)
         let repolisttableTable = app.tables["RepoListTable"]
         
@@ -127,7 +129,7 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         
         let textFieldElement = app.textFields["textField"]
         let exists = NSPredicate(format: "exists == 1")
-        let expectation0 = expectation(for: exists, evaluatedWith: textFieldElement)
+        _ = expectation(for: exists, evaluatedWith: textFieldElement)
         waitForExpectations(timeout: 10, handler: nil)
         let repolisttableTable = app.tables["RepoListTable"]
         
@@ -163,7 +165,7 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         
         let textFieldElement = app.textFields["textField"]
         let exists = NSPredicate(format: "exists == 1")
-        let expectation0 = expectation(for: exists, evaluatedWith: textFieldElement)
+        _ = expectation(for: exists, evaluatedWith: textFieldElement)
         waitForExpectations(timeout: 10, handler: nil)
         let repolisttableTable = app.tables["RepoListTable"]
         
@@ -210,7 +212,7 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         
         let textFieldElement = app.textFields["textField"]
         let exists = NSPredicate(format: "exists == 1")
-        let expectation0 = expectation(for: exists, evaluatedWith: textFieldElement)
+        _ = expectation(for: exists, evaluatedWith: textFieldElement)
         waitForExpectations(timeout: 10, handler: nil)
         let repolisttableTable = app.tables["RepoListTable"]
         
@@ -260,7 +262,7 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         
         let textFieldElement = app.textFields["textField"]
         let exists = NSPredicate(format: "exists == 1")
-        let expectation0 = expectation(for: exists, evaluatedWith: textFieldElement)
+        _ = expectation(for: exists, evaluatedWith: textFieldElement)
         waitForExpectations(timeout: 10, handler: nil)
         
         textFieldElement.tap()

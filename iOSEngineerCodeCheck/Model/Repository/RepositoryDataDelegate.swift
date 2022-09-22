@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-protocol RepositoryDataDelegate {
+protocol RepositoryDataDelegate: AnyObject {
     
     // carry repository list fetched
     func carryRepoData(_ repositoryDataManager: RepositoryDataManager, didFetchRepoData repoData: [RepositoryModel])

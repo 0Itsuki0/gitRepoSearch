@@ -58,8 +58,8 @@ class RootViewController: UIViewController, UITableViewDataSource {
         
         // assigning delegates
         textField.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
         repoDataManager.delegate = self
         
         // modify appearance
@@ -120,7 +120,10 @@ class RootViewController: UIViewController, UITableViewDataSource {
         
         repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, sortType: getSortType())
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
             self.tableView.reloadData()
         }
         
@@ -147,7 +150,10 @@ class RootViewController: UIViewController, UITableViewDataSource {
         
         repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, sortType: getSortType())
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
             self.tableView.reloadData()
         }
     }
@@ -162,7 +168,10 @@ class RootViewController: UIViewController, UITableViewDataSource {
         
         repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, sortType: getSortType())
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
             self.tableView.reloadData()
         }
     }
@@ -243,16 +252,19 @@ extension RootViewController: RepositoryDataDelegate {
     // handle data fetched from API Call
     func carryRepoData(_ repositoryDataManager: RepositoryDataManager, didFetchRepoData repoData: [RepositoryModel]) {
         
-        DispatchQueue.main.async { [self] in
-            repoList_original = repoData
-            repoList_filteredSorted = repoDataManager.manageRepoList(starSwitch: starSwitch, langButtons: langButtonList, repoList: repoList_original, sortType: getSortType())
+        DispatchQueue.main.async { [weak self] in
+                guard let self = self else {
+                    return
+                }
+            self.repoList_original = repoData
+            self.repoList_filteredSorted = self.repoDataManager.manageRepoList(starSwitch: self.starSwitch, langButtons: self.langButtonList, repoList: self.repoList_original, sortType: self.getSortType())
             
-            tableView.reloadData()
+            self.tableView.reloadData()
             
-            if (repoList_original.count == 0) {
-                showAlert(withMessage: "No Matching")
-            } else if (repoList_filteredSorted.count == 0 && repoList_original.count != 0) {
-                showAlert(withMessage: "No repository matching for the given filter")
+            if (self.repoList_original.count == 0) {
+                self.showAlert(withMessage: "No Matching")
+            } else if (self.repoList_filteredSorted.count == 0 && self.repoList_original.count != 0) {
+                self.showAlert(withMessage: "No repository matching for the given filter")
             }
             
         }
@@ -260,7 +272,10 @@ extension RootViewController: RepositoryDataDelegate {
 
     // handle error from API Call
     func carryError(_ repositoryDataManager: RepositoryDataManager, didFailWithError error: String) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
             self.showAlert(withMessage: error)
         }
     }

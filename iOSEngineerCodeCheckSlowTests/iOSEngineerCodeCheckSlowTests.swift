@@ -15,6 +15,8 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
     var imgData: Data?
     var expectation_testSuccess: XCTestExpectation?
     var expectation_testFailure: XCTestExpectation?
+    var langButtonList: [UIButton]!
+    var rootVC: RootViewController!
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -23,6 +25,12 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
         sut_repositoryDataManager.delegate = self
         repoDataList = nil
         imgData = nil
+        
+        rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RootViewController") as? RootViewController
+        rootVC.loadViewIfNeeded()
+        langButtonList = [rootVC.langButtonC, rootVC.langButtonCPlusPlus, rootVC.langButtonCSharp, rootVC.langButtonGo, rootVC.langButtonJava, rootVC.langButtonJavaScript, rootVC.langButtonPHP, rootVC.langButtonRuby, rootVC.langButtonPython, rootVC.langButtonScala, rootVC.langButtonTypeScript, rootVC.langButtonOther]
+    
+        
     }
 
     override func tearDownWithError() throws {
@@ -30,6 +38,8 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
         sut_repositoryDataManager = nil
         repoDataList = nil
         imgData = nil
+        rootVC = nil
+        langButtonList = nil
         try super.tearDownWithError()
     }
 
@@ -62,18 +72,13 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
         XCTAssertNotNil(repoDataList, "fail in fetching repository Data")
         
         // button
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let rootVC = storyboard.instantiateViewController(withIdentifier: "RootViewController") as? RootViewController
-        guard let rootVC = rootVC else {
-            return
-        }
+
         
-        rootVC.loadViewIfNeeded()
         rootVC.starSwitch.isOn = true
         rootVC.langButtonC.isSelected = false
         rootVC.sortNewestButton.isSelected = true
         
-        let filteredList = sut_repositoryDataManager.manageRepoList(starSwitch: rootVC.starSwitch, langButtons: rootVC.langButtonList, repoList: repoDataList ?? [], sortType: .byNewest)
+        let filteredList = sut_repositoryDataManager.manageRepoList(starSwitch: rootVC.starSwitch, langButtons: langButtonList, repoList: repoDataList ?? [], sortType: .byNewest)
           
   
         var currentDate = stringToDate(dateTimeString: filteredList[0].updated_at)
@@ -91,7 +96,7 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
             XCTAssertTrue(currentDate <= prevDate, "failed in sorting by newest order")
             prevDate = currentDate
             
-            for langButton in rootVC.langButtonList {
+            for langButton in langButtonList {
                 if langButton.titleLabel?.text == repo.language {
                     XCTAssertTrue(langButton.isSelected, "failed in language filtering for major language.")
                 } else if (langButton.titleLabel?.text == "Other" && !K.languages.allCases.contains(where: { $0.rawValue == (repo.language ?? "")})) {
@@ -122,7 +127,7 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
         rootVC.starSwitch.isOn = true
         rootVC.langButtonC.isSelected = false
         
-        let filteredList = sut_repositoryDataManager.manageRepoList(starSwitch: rootVC.starSwitch, langButtons: rootVC.langButtonList, repoList: repoDataList ?? [], sortType: .byAscendingStar)
+        let filteredList = sut_repositoryDataManager.manageRepoList(starSwitch: rootVC.starSwitch, langButtons: langButtonList, repoList: repoDataList ?? [], sortType: .byAscendingStar)
           
   
         var currentCount = 0
@@ -135,7 +140,7 @@ final class iOSEngineerCodeCheckSlowTests: XCTestCase {
             XCTAssertTrue(currentCount >= prevCount, "failed in sorting by star Count")
             prevCount = currentCount
             
-            for langButton in rootVC.langButtonList {
+            for langButton in langButtonList {
                 if langButton.titleLabel?.text == repo.language {
                     XCTAssertTrue(langButton.isSelected, "failed in language filtering for major language.")
                 } else if (langButton.titleLabel?.text == "Other" && !K.languages.allCases.contains(where: { $0.rawValue == (repo.language ?? "")})) {

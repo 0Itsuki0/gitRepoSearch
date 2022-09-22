@@ -11,7 +11,7 @@ import UIKit
 
 struct RepositoryDataManager {
     
-    var delegate: RepositoryDataDelegate?
+    weak var delegate: RepositoryDataDelegate?
     
     // fetch repository list for user input
     func fetchRepoData(_ userInput: String) {

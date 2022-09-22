@@ -82,3 +82,4 @@ Repository関連FunctionのVCからの分離
 - Accessibility Identifiers：[XCUIElementの使い方をざっくりまとめてみた](https://qiita.com/terry-private/items/81c07510d90d5946d0fc)
 - GIFの使用：[Animated launch screen using a GIF in iOS](https://www.amerhukic.com/animating-launch-screen-using-gif)
 - グラデーションの使用：[Create Gradients in App (UIKit, Swift 5, Xcode 12, 2021) - iOS Development](https://www.youtube.com/watch?v=Qk_H0mlSIQc)
+- メモリーリーク：[iOSアプリのメモリリーク (Memory Leak) の検出とデバッグの方法を、ネコに関するプログラムで学びましょう。(Reference Cycle 参照サイクル)](https://qiita.com/MaShunzhe/items/8073d32d7aee28578cab)
