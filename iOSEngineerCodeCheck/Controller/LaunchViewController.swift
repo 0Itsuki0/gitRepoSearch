@@ -19,9 +19,10 @@ class LaunchViewController: UIViewController {
         super.viewDidLoad()
         
         do {
-            let gif = try UIImage(gifName: "launchScreen.gif")
+            let gif = try UIImage(gifName: "launchScreen4x.gif")
             animationView = UIImageView(gifImage: gif, loopCount: 1)
             animationView.frame = LuanchImageView.bounds
+            LuanchImageView.image = nil
             LuanchImageView.addSubview(animationView)
             animationView.delegate = self
             
