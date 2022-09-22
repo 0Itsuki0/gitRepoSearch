@@ -15,6 +15,7 @@ struct K {
     
     static let starThreshold: Int = 1000
     
+    static let repoSearchBaseURL: String = "https://api.github.com/search/repositories?q="
 
     enum languages: String, CaseIterable {
         case langC = "C"

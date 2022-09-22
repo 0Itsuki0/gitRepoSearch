@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReusableCell" rowHeight="100" id="KGk-i7-Jjw" customClass="TableViewCell" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM" userLabel="Cell">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZQO-JR-uGH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" distribution="fillProportionally" alignment="top" spacing="-7" translatesAutoresizingMaskIntoConstraints="NO" id="DPz-VS-Rrc">
+                                <rect key="frame" x="19.999999999999993" y="5" width="99.333333333333314" height="90"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="RepoTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wac-7m-cjl">
+                                        <rect key="frame" x="0.0" y="0.0" width="95.666666666666671" height="52.333333333333336"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="22"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RepoLanguage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZZ-UH-HzE">
+                                        <rect key="frame" x="0.0" y="45.333333333333336" width="86.666666666666671" height="30.333333333333336"/>
+                                        <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RepoUpdateDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yM2-1M-CR8" userLabel="RepoUpdateDate">
+                                        <rect key="frame" x="0.0" y="68.666666666666671" width="99.333333333333329" height="21.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="xPf-qH-kFc"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" spacing="-7" translatesAutoresizingMaskIntoConstraints="NO" id="g32-Fu-kks">
+                                <rect key="frame" x="359.33333333333331" y="15" width="34.666666666666686" height="70"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvv-fL-kiC">
+                                        <rect key="frame" x="5.3333333333333695" y="-4.3333333333333357" width="29.333333333333329" height="46.333333333333336"/>
+                                        <color key="tintColor" red="0.99708908796310425" green="0.98848003149032593" blue="0.0054007517173886299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <imageReference key="image" image="star.fill" catalog="system" symbolScale="large" renderingMode="template"/>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Count" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXg-X0-16S">
+                                        <rect key="frame" x="0.0" y="31.666666666666661" width="34.666666666666664" height="38.333333333333343"/>
+                                        <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="7Ip-Nf-bgd"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DPz-VS-Rrc" firstAttribute="leading" secondItem="ZQO-JR-uGH" secondAttribute="leading" constant="20" id="1tf-ME-hzd"/>
+                            <constraint firstItem="DPz-VS-Rrc" firstAttribute="centerY" secondItem="ZQO-JR-uGH" secondAttribute="centerY" id="GMA-WO-Aoy"/>
+                            <constraint firstItem="DPz-VS-Rrc" firstAttribute="centerY" secondItem="ZQO-JR-uGH" secondAttribute="centerY" id="Lc5-WZ-jZm"/>
+                            <constraint firstItem="g32-Fu-kks" firstAttribute="centerY" secondItem="ZQO-JR-uGH" secondAttribute="centerY" id="UkR-ND-fuE"/>
+                            <constraint firstAttribute="trailing" secondItem="g32-Fu-kks" secondAttribute="trailing" constant="20" id="cZ7-dM-bG9"/>
+                            <constraint firstAttribute="height" constant="100" id="yx0-wq-7UN"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="ZQO-JR-uGH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="4JZ-JU-DXn"/>
+                    <constraint firstItem="ZQO-JR-uGH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Qvd-aG-nlf"/>
+                    <constraint firstAttribute="bottom" secondItem="ZQO-JR-uGH" secondAttribute="bottom" id="g2w-SR-qbl"/>
+                    <constraint firstAttribute="trailing" secondItem="ZQO-JR-uGH" secondAttribute="trailing" id="srO-1a-8a8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cellBackgroundColorView" destination="H2p-sc-9uM" id="U5Q-0o-dUD"/>
+                <outlet property="repoLanguageLabel" destination="iZZ-UH-HzE" id="uX1-Ut-X7p"/>
+                <outlet property="repoTitleLabel" destination="wac-7m-cjl" id="55b-PF-dnR"/>
+                <outlet property="repoUpdateDateLabel" destination="yM2-1M-CR8" id="q6Z-CH-zmK"/>
+                <outlet property="starCount" destination="eXg-X0-16S" id="Ugu-8r-ele"/>
+                <outlet property="starImage" destination="fvv-fL-kiC" id="lSW-Of-ivV"/>
+            </connections>
+            <point key="canvasLocation" x="44.615384615384613" y="-11.374407582938389"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+    </resources>
+</document>

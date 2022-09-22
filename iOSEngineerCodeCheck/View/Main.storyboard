@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i1U-Tk-yY9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0ll-ie-y4R">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -95,7 +95,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rF8-tS-UVt">
+                            <view hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rF8-tS-UVt">
                                 <rect key="frame" x="114" y="70" width="300" height="560"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="U97-kZ-yz8" userLabel="StarFilterStack">
@@ -546,6 +546,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="filterView" destination="rF8-tS-UVt" id="kvx-GR-y1G"/>
+                        <outlet property="filterViewButton" destination="9dN-bJ-4l9" id="xYk-CQ-DEu"/>
                         <outlet property="langButtonC" destination="8Rv-WP-VWC" id="MeQ-J1-m43"/>
                         <outlet property="langButtonCPlusPlus" destination="BJc-2d-TE6" id="sq5-AG-hLl"/>
                         <outlet property="langButtonCSharp" destination="NoH-ca-HTe" id="AVh-0j-gXa"/>
@@ -587,10 +588,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZAJ-eI-lK0">
-                                <rect key="frame" x="143.5" y="424" width="127" height="60"/>
+                                <rect key="frame" x="164" y="424" width="86" height="60"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BuU-K8-YZ5">
-                                        <rect key="frame" x="0.0" y="15.5" width="29.5" height="28"/>
+                                        <rect key="frame" x="0.0" y="15.5" width="20" height="28"/>
                                         <color key="tintColor" red="0.99708908799999996" green="0.98848003149999997" blue="0.0054007517169999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="E2r-TD-1E9"/>
@@ -600,7 +601,7 @@
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4q1-pG-WSB">
-                                        <rect key="frame" x="44.5" y="1.5" width="82.5" height="57"/>
+                                        <rect key="frame" x="35" y="1.5" width="51" height="57"/>
                                         <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="40"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -751,8 +752,41 @@
             </objects>
             <point key="canvasLocation" x="-546.37681159420299" y="235.71428571428569"/>
         </scene>
+        <!--Launch View Controller-->
+        <scene sceneID="oa3-NW-25y">
+            <objects>
+                <viewController id="0ll-ie-y4R" customClass="LaunchViewController" customModule="iOSEngineerCodeCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IYq-4T-13y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreen_finalFrame" translatesAutoresizingMaskIntoConstraints="NO" id="nii-Kq-PEN">
+                                <rect key="frame" x="20" y="261" width="374" height="374"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nii-Kq-PEN" secondAttribute="height" multiplier="1:1" id="xPs-sW-GjR"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KrI-jt-DXy"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nii-Kq-PEN" firstAttribute="leading" secondItem="IYq-4T-13y" secondAttribute="leadingMargin" id="8Sw-lC-TfF"/>
+                            <constraint firstItem="nii-Kq-PEN" firstAttribute="centerX" secondItem="IYq-4T-13y" secondAttribute="centerX" id="WdJ-P6-CU2"/>
+                            <constraint firstItem="nii-Kq-PEN" firstAttribute="centerY" secondItem="IYq-4T-13y" secondAttribute="centerY" id="X0l-6f-5WW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="LuanchImageView" destination="nii-Kq-PEN" id="MCA-jR-AN9"/>
+                        <segue destination="i1U-Tk-yY9" kind="presentation" identifier="LaunchToRoot" modalPresentationStyle="fullScreen" id="GFw-El-HIo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qaj-tG-IYW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1578.2608695652175" y="235.71428571428569"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="launchScreen_finalFrame" width="2160" height="2160"/>
         <image name="magnifyingglass.circle" catalog="system" width="128" height="123"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="switch.2" catalog="system" width="128" height="109"/>
